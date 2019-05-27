@@ -1,0 +1,6 @@
+<!--pages/user/mycollect/index.wxml-->
+<import src="../../cyclv/cyclv.wxml"/>
+<view class='container'>
+  <template is="msgItem" data="{{goodsinfo}}" />
+</view>
+

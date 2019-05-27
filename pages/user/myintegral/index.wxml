@@ -1,0 +1,28 @@
+<view class="container">
+  <view class='top flexct wt100'>
+    <text class='title1'>1000</text>
+    <text class='title mgtop60'>吴先生</text>
+  </view>
+  <view class='classify wt100 flexct'>
+    <view class='content flexlb wt90'>
+      <view class='list flexct {{ctselect == 1?"select":""}}' bindtap='ctbind' data-idx='1'>赚取积分</view>
+      <view class='list flexct {{ctselect == 2?"select":""}}' bindtap='ctbind' data-idx='2'>消费记录</view>
+    </view>
+  </view>
+  <view class='info wt100 flexct'>
+    <view class='if-content flexlb wt90' wx:for="{{content}}" wx:key>
+      <view class='left flexsx'>
+        <view>{{item.title}}</view> 
+        <view> 
+          <text class='text' wx:if="{{ctselect == 1}}">积分 + </text>
+          <text class='text' wx:else>积分 - </text>
+          {{item.size}}
+        </view>
+      </view>
+      <view class='right flexsx'> 
+        <view>{{item.time}}</view>
+        <view wx:if="{{ctselect == 1}}">{{item.type}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,13 @@
+<!--pages/invite/invite.wxml-->
+<view class='container'>
+  <view class='wt100'><image class='wt100' mode='widthFix' src='../../imgs/benefit.png'></image> </view>
+  <button class='btn mypp'>立刻邀请微信好友</button>
+  <view class='rule'>
+    <view> 1.从未使用墩哥的好友，在接受邀请后，完成首笔充值并收货完成；</view>
+    <view>2.每个邀请成功一人奖励800积分；</view>
+    <view>3.奖励积分使用范围：平台上所有产品；</view>
+    <view>4.要想获得更多的积分需要邀请不同的新用户哦；</view>
+    <view>5.本活动最终解析权归墩哥所有；</view>
+    <button class='btn myecode'>活动规则</button>
+  </view>
+</view>

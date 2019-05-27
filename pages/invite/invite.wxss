@@ -1,0 +1,25 @@
+/* pages/invite/invite.wxss */
+.btn{
+  width: 500rpx;
+  border-radius: 100px;
+}
+.mypp{
+  margin-top: 20px;
+}
+/* 活动规则 */
+.rule{
+  margin-top: 40px;
+  width: 630rpx;
+  height: 400rpx;
+  background: #f5f5f5;
+  position: relative;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  padding: 0rpx 20rpx ;
+  padding-top:80rpx;
+}
+.myecode{
+  position: absolute;
+  left: 75rpx;
+  top: -20px;
+}

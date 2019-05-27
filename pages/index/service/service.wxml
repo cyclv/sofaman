@@ -1,0 +1,5 @@
+<!--pages/index/service/service.wxml-->
+<view class='container'>
+  <view class='service flexct'>在线客服</view>
+  <view class='service flexct'>人工客服</view>
+</view>

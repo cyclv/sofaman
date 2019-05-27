@@ -1,0 +1,38 @@
+/* pages/index/benefit/benefit.wxss */
+/* 充值金额 */
+.benefithd{
+  width: 690rpx;
+  font-size: 34rpx;
+  color: #a19b9b;
+}
+.benefit{
+  width: 690rpx;
+  height: 160rpx;
+}
+.benefit .item{
+  width: 325rpx;
+  height: 110rpx;
+  border: 1rpx solid #a19b9b;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  color: #a19b9b;
+}
+.benefit .item .it-top{
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+}
+.benefit .item .it-btm{
+  margin-left: 20rpx;
+}
+.it-t{
+  color: #f5634b;
+  font-size: 28rpx;
+}
+.benefit .selectid{
+  border: 1rpx solid #f5634b;
+}
+/* button按钮 */
+.btn{
+  width: 690rpx;
+  margin-top: 40rpx;
+}

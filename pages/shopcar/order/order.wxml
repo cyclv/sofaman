@@ -1,0 +1,31 @@
+<!--pages/shopcar/order/order.wxml-->
+<view class='container'>
+  <!-- 订单分类 -->
+  <view class='top flexct wt100'>
+    <view class='item flexct' wx:for="{{ordercl}}" bindtap='ordercl' data-idx='{{index}}' wx:key>
+      <text class='{{index==selectcl?"selectcl":""}}'>{{item.name}}</text>
+    </view>
+  </view>
+  <!-- 订单展示 -->
+  <view class='order' wx:if="{{orderinfo}}">
+    <view class='od-top'>订单编号：12316546</view>
+    <view class='good flex' wx:for='{{carts}}' wx:key>
+      <view class='left'>
+        <image src='{{item.goodsimage}}' class='wt100' mode='widthFix'></image>
+      </view>
+      <view class='right'>
+        <view class='info1'>{{item.goodsname}}</view>
+        <view class='info2 mgtop10'>型号1000;白色</view>
+        <view class='info3 mgtop10'><text>￥:{{item.price}}</text> <text class='inf'>X{{item.status}}</text></view>
+      </view>
+    </view>
+    <view class='od-bom'>
+      <view class='btn'>付款</view>
+    </view>
+  </view>
+  <!-- 暂无订单 -->
+  <view class='no-order flexct wt100' wx:else>
+    您还没有相关订单
+  </view>
+</view>
+

@@ -1,0 +1,128 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.2",
+	"appid": "wx63b1a16693a06142",
+	"projectname": "%E5%A2%A9%E5%93%A5",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 11,
+			"list": [
+				{
+					"id": 0,
+					"name": "我的中心",
+					"pathName": "pages/user/user",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "沙发定制",
+					"pathName": "pages/sofa/sofa",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "天气",
+					"pathName": "pages/weather/weather",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "购物车",
+					"pathName": "pages/shopcar/shopcar",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收货地址",
+					"pathName": "pages/user/userads/userads",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "充值钜惠",
+					"pathName": "pages/index/benefit/benefit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的收藏",
+					"pathName": "pages/user/mycollect/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/goodsdt/goodsdt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "邀请系统",
+					"pathName": "pages/invite/invite",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单",
+					"pathName": "pages/shopcar/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "积分中心",
+					"pathName": "pages/user/myintegral/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的客户",
+					"pathName": "pages/invite/myclient/client",
+					"scene": null
+				}
+			]
+		}
+	}
+}

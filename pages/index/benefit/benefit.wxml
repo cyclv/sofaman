@@ -1,0 +1,14 @@
+<!--pages/index/benefit/benefit.wxml-->
+<view class='container'>
+  <view class='top wt100'>
+    <image class='wt100' mode='widthFix' src='../../../imgs/benefit.png'></image>
+  </view>
+  <view class='benefithd flexlb'>选择充值金额</view>
+  <view class='flexlb benefit'>
+    <view wx:for="{{benefit}}" wx:key class='item {{index==selectid?"selectid":""}}' bindtap='bnft' data-idx='{{index}}'>
+      <view class='it-top'>充{{item.price}}￥</view>
+      <view class='it-btm'>获取<text class='it-t'> {{item.mprice}} </text>积分</view>
+    </view>
+  </view>
+  <button class='btn' bindtap='pay'>微信支付</button>
+</view>

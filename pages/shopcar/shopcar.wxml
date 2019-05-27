@@ -1,0 +1,65 @@
+<view wx:if="{{hasList}}">
+    <view class="container carts-list">
+      <view wx:key="isshop" wx:for="{{carts}}" class="carts-item">
+        <view class="carts-choice">
+          <icon wx:if="{{item.selected}}" type="success" color="#d81e06" size="30" bindtap="bindCheckbox" data-index="{{index}}" style='opacity:1'/>
+          <icon wx:else type="success" color="#d81e06" size="30" bindtap="bindCheckbox" data-index="{{index}}" style='opacity:0.1'/>
+        </view>
+        <view class="carts-image">
+          <image src="{{item.goods.goodsimage}}"></image>
+        </view>
+        <view class="carts-text">
+          <view class="carts-title">
+            <text>{{item.goods.goodsname}}</text>
+          </view>
+          <!-- 加减号控制数量-->
+          <view class='stepper-box'>
+            <view><text>￥{{item.price}}</text></view>
+            <view class="stepper">
+              <!-- 减号 --><text class="{{minusStatuses[index]}}" disabled="true" data-index="{{index}}" bindtap="bindMinus">-</text>
+              <!-- 数值 --><input maxlength='5' class="number"  type="number" data-index="{{index}}"  bindinput='bindManual' value="{{item.num}}" />  
+              <!-- 加号 --><text class="normal" data-index="{{index}}" bindtap="bindPlus">+</text>
+            </view>
+          </view>
+        </view>
+        <!-- 删除 -->
+        <view class="delete">
+          <view class="delete-img" bindtap="deleteList" data-index="{{index}}">
+            <image src="../../imgs/delect.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 全选和结算---------------------------------------- -->
+    <view class="carts-footer">
+      <view class="all-chioce">
+        <view class="footer-left">
+          <icon wx:if="{{selectedAllStatus}}" type="success" color="#d81e06" style='opacity:1' size="30" bindtap="bindSelectAll" />
+          <icon wx:else type="success" color="#d81e06" style='opacity:0.2' size="30" bindtap="bindSelectAll" />
+          <text style='color:#5c5c5c'>全选</text>
+        </view>
+        <view class="footer-right">
+          <view class="right-text">
+            <text style='color:#333333'>合计</text>
+            <text>￥{{total}}</text>
+          </view>
+          <!-- <view class="free">
+            <text style='font-size:24rpx;'>不含运费</text>
+          </view> -->
+        </view>
+      </view>
+      <view class="button" bindtap="orderInto">立即结算</view>
+    </view>
+</view>
+<!-- 购物车缺省页 -->
+<view wx:if="{{!hasList}}" class="carts-default">
+  <view>
+    <view class='default-img'>
+      <image src='../../imgs/shopping_default.png'></image>
+    </view>
+    <text>购物车空空如也</text>
+    <view  bindtap="tobackHome" class="back-box flexca">
+      <text>去选择商品</text>
+    </view>
+  </view>
+</view>

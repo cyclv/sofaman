@@ -1,0 +1,25 @@
+<view class="list">
+  <form bindsubmit="formSubmit">
+    <view class="item">
+      <label>收件人：</label>
+      <input maxlength='30' placeholder-style="color:#666" name="username" placeholder="请输入收件人姓名"/>
+    </view>
+    <view class="item" style='border-bottom-color:transparent'>
+      <label>手机号：</label>
+      <input placeholder-style="color:#666" maxlength="11" type="idcard" name="phone" placeholder="请输入收件人联系电话 "/>
+    </view>
+    <view class="item-addr flexa" bindtap="translate">  
+      <view>所在城市：</view>
+      <view wx:if="{{valuetext?'':true}}">请选择</view>
+      <view>{{valuetext}}</view>
+       <input name="valuetext" placeholder-style="color:#333" placeholder="请选择" class="animation-button" bindtap="translate"></input>
+    </view>
+    <view class="item">
+      <label>详细地址：</label>
+      <input maxlength='50' placeholder-style="color:#666" name="address" placeholder="请输入收件人详细地址"  data-put='3'></input>
+    </view>
+    <view class="item bt">
+      <button formType="submit" class="btn">{{adrchange?'保存':'保存'}}</button>
+    </view>
+  </form>
+</view>

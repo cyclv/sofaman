@@ -1,0 +1,23 @@
+<!--pages/cyclv.wxml-->
+<template name="msgItem">
+  <view class='container'>
+    <view class='wt100 flexct'>
+      <view class='among-content clear flexlb'>
+        <block wx:key="shoplist" wx:for="{{goodsinfo}}" wx:for-index="index">
+          <view class="shop-box" data-id='{{item.id}}' bindtap='detailInto'>
+            <view class="shop-img">
+                <image class='image-full'  src="{{bannerurl}}{{item.goodsimage}}"></image>  
+            </view>
+            <view class="shop-detail">
+                <view class='shop_info'>{{item.goodsname}}</view>
+                <view class='bottom_info'>
+                  <view class='price1'>积分：{{item.price}}</view>
+                  <!-- <view class='price2'>￥{{item.price}}</view> -->
+                </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</template>

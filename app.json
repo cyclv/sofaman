@@ -1,0 +1,50 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/goodsdt/goodsdt",
+    "pages/index/benefit/benefit",
+    "pages/index/service/service",
+    "pages/user/user",
+    "pages/user/myclient/index",
+    "pages/user/myintegral/index",
+    "pages/user/mycollect/index",
+    "pages/user/userads/userads",
+    "pages/user/useradsadd/useradsadd",
+    "pages/shopcar/shopcar",
+    "pages/shopcar/order/order",
+    "pages/invite/invite", 
+    "pages/invite/myclient/client",
+    "pages/invite/mclientdt/clientdt",
+    "pages/invite/record/record"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "墩哥",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#B0B0B0",
+    "selectedColor": "#839AAF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "imgs/index/tab_n1.png",
+        "selectedIconPath": "imgs/index/tab_s1.png"
+      },
+      {
+        "pagePath": "pages/shopcar/shopcar",
+        "text": "购物车",
+        "iconPath": "imgs/index/tab_n2.png",
+        "selectedIconPath": "imgs/index/tab_s2.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "imgs/index/tab_n3.png",
+        "selectedIconPath": "imgs/index/tab_s3.png"
+      }
+    ]
+  }
+}
