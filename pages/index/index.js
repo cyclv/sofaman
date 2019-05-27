@@ -68,5 +68,9 @@ Page({
   */
   onShareAppMessage: function () {
 
+  },
+  // 页面下拉到底
+  onReachBottom:function (){
+    console.log(111)
   }
 })

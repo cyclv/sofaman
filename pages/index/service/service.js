@@ -17,7 +17,11 @@ Page({
       backgroundColor: '#d81e06',
     })
   },
-
+  callphone: function(){
+    wx.makePhoneCall({
+      phoneNumber: '17858412499' // 仅为示例，并非真实的电话号码
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

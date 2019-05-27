@@ -1,16 +1,19 @@
 <!--pages/invite/mclientdt/clientdt.wxml-->
-<view class='info wt100 flexct'>
-    <view class='if-content flexlb wt90' wx:for="{{content}}" wx:key>
-      <view class='left flexsx'>
-        <view>{{item.title}}</view> 
-        <view> 
-          <text class='text' >积分 + </text>
-          {{item.size}}
-        </view>
-      </view>
-      <view class='right flexsx'> 
-        <view>{{item.time}}</view>
-        <view>{{item.type}}</view>
+<view wx:if='{{content}}' class='info wt100 flexct'>
+  <view class='if-content flexlb wt90' wx:for="{{content}}" wx:key>
+    <view class='left flexsx'>
+      <view>{{item.title}}</view> 
+      <view> 
+        <text class='text' >积分 + </text>
+        {{item.size}}
       </view>
     </view>
+    <view class='right flexsx'> 
+      <view>{{item.time}}</view>
+      <view>{{item.type}}</view>
+    </view>
   </view>
+</view>
+<view class='nothing info wt100 flexct' wx:else>
+  暂无数据
+</view>

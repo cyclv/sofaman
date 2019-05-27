@@ -14,7 +14,8 @@ Page({
   onLoad: function (options) {
     console.log(JSON.parse(options.info))
     var data = [{id:1,title:'充值1000',size:'1400',type:'加油',time:'2018-12-26 12:33'}]
-    data.push(JSON.parse(options.info))
+    // data.push(JSON.parse(options.info))
+    //const data = []
     this.setData({
       content: data
     })

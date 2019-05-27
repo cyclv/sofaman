@@ -1,5 +1,5 @@
 <!--pages/index/service/service.wxml-->
 <view class='container'>
-  <view class='service flexct'>在线客服</view>
-  <view class='service flexct'>人工客服</view>
+  <button class='service flexct' open-type="contact">在线客服</button>
+  <view class='service flexct' bindtap='callphone'>人工客服</view>
 </view>

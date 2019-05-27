@@ -31,7 +31,7 @@ Page({
     if(idx == 1){
       this.setData({ ctselect: idx, content: this.data.content1})
     }else{
-      this.setData({ ctselect: idx, content:this.data.content2})
+      this.setData({ ctselect: idx, content:''})
     }
   },
   /**

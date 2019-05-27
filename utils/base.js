@@ -1,3 +1,4 @@
+//post 封装请求
 function postrequst(url,data) {
   return new Promise(function (resolve, reject) {
     wx.request({
@@ -14,6 +15,7 @@ function postrequst(url,data) {
     })
   })
 }
+// get 封装请求
 function getrequst(url,data) {
   return new Promise(function (resolve, reject) {
     wx.request({
