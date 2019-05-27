@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/goodsdt/goodsdt",
     "pages/index/benefit/benefit",
@@ -12,16 +12,16 @@
     "pages/user/useradsadd/useradsadd",
     "pages/shopcar/shopcar",
     "pages/shopcar/order/order",
-    "pages/invite/invite", 
+    "pages/invite/invite",
     "pages/invite/myclient/client",
     "pages/invite/mclientdt/clientdt",
     "pages/invite/record/record"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "墩哥",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#B0B0B0",
@@ -46,5 +46,6 @@
         "selectedIconPath": "imgs/index/tab_s3.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

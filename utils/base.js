@@ -1,5 +1,4 @@
 function postrequst(url,data) {
-  // console.log(url)
   return new Promise(function (resolve, reject) {
     wx.request({
       url:'http://dunge.lyworker.com/' + url,
