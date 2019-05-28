@@ -10,7 +10,7 @@ function postrequst(url,data) {
       method: "POST",
       success: function (res) {
         // console.log(res)
-        resolve(res)
+        resolve(res.data)
       }
     })
   })

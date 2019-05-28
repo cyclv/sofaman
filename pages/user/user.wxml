@@ -2,8 +2,12 @@
 <view class='page'>
   <!-- 顶部头像 -->
   <view class='top flexct wt100'>
-      <image class='img' src='../../imgs/benefit.png'></image>
-      <text class='title' bindtap='userinfo'>吴先生</text>
+      <!-- <image class='img' src='../../imgs/benefit.png'></image> -->
+      <view class='img'>
+        <open-data class='img' type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName" class='title' bindtap='userinfo'></open-data>
+      <!-- <text class='title' bindtap='userinfo'>吴先生</text> -->
   </view>
   <!-- 订单信息 -->
   <view class='icon flex wt100'>

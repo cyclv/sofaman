@@ -1,4 +1,5 @@
 // pages/user/userads/userads.js
+const bases = require('../../../utils/base.js')
 Page({
 
   /**
@@ -12,7 +13,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const that = this;
+    const openid = wx.getStorageSync('openid') 
+    bases.getrequst('api/address/list', { openid: openid}).then(function(res){
+      console.log(res)
+      if(res.code == 1103){
+        console.log('没有数据')
+      }else if(res.code == 200){
+        that.setData({list:res.data.list})
+      }
+    })
   },
 
   /**
@@ -21,7 +31,13 @@ Page({
   onReady: function () {
 
   },
-
+  // 编辑地址
+  addressdt:function(e){
+    const address = e.currentTarget.dataset.item
+    wx.navigateTo({
+      url: '../useradsadd/useradsadd?address=' + JSON.stringify(address),
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

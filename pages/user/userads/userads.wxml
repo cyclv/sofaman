@@ -7,10 +7,10 @@
     <radio-group class="radio-group" bindchange="radioChange">
       <block wx:for="{{list}}" wx:key="unique">
         <view class='item'>
-          <radio class='radio' checked="{{item.is_top == 1?true:false}}" value='{{item.address_id}}'></radio>
-          <view class='tit'>{{item.consignee}} {{item.mobile}}</view>
-          <view class='info'>{{item.provincename}}{{item.cityname}}{{item.districtname}} {{item.address}}</view>
-          <navigator url='../useradsadd/useradsadd?address_id={{item.address_id}}' class='edit'>编辑</navigator>
+          <radio class='radio' checked="{{item.selected == 1?true:false}}" value='{{item.id}}'></radio>
+          <view class='tit'>{{item.username}} {{item.phone}}</view>
+          <view class='info'>{{item.address}}</view>
+          <view bindtap='addressdt' data-item='{{item}}' class='edit'>编辑</view>
         </view>
       </block>
     </radio-group>

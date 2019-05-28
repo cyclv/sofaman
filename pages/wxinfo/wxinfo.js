@@ -1,5 +1,5 @@
 // pages/wxinfo/wxinfo.js
-var bases = require('../../utils/util.js');
+var bases = require('../../utils/base.js');
 Page({
 
   /**
@@ -17,22 +17,22 @@ Page({
   },
   getUserInfo: function (e) {
     var userinfo = e.detail.userInfo;
-    let user = wx.getStorageSync('userinfo');
+    let user = wx.getStorageSync('openid')
     console.log(user,userinfo)
     // 用户注册封装
-    // bases.postrq('/Wx/saveuserinfo', { id: user.id, userurl: userinfo.avatarUrl, username: userinfo.nickName }).then(function (res) {
-    //   // console.log(res)
-    //   if (res.data) {
-    //     wx.setStorageSync('userinfo', res.data);
-    //     wx.navigateBack({
-    //       delta: 2,
-    //     })
-    //   } else {
-    //     wx.navigateBack({
-    //       delta: 2,
-    //     })
-    //   }
-    // })
+    bases.postrequst('api/login', { openid: user, avatar: userinfo.avatarUrl, nickname: userinfo.nickName }).then(function (res) {
+      console.log(res.data.user)
+      if (res.data.user) {
+        wx.setStorageSync('userinfo', res.data.user);
+        wx.navigateBack({
+          delta: 2,
+        })
+      } else {
+        wx.navigateBack({
+          delta: 2,
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
