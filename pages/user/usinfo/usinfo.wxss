@@ -1,0 +1,162 @@
+/* pages/user/usinfo/usinfo.wxss */
+.contain{
+  width: 100%;
+  height: 100%;
+  font-size: 32rpx;
+  /* position: relative; */
+}
+image{
+  height: 160rpx;
+  width: 160rpx;
+  border-radius: 50%;
+}
+page{
+  background: white;
+  height: 100%;
+  width: 100%;
+}
+.margin{
+  margin: 0 40rpx;
+}
+.aboutme{
+  background: white;
+  width: 100%;
+}
+.namebox,.caridbox,.phone{
+  height: 88rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f7f7f7;
+}
+.upbtn{
+  top: 480rpx; 
+  width: 280rpx;
+  height: 88rpx;
+  /* bottom: 88rpx; */
+  border-radius: 44rpx;
+  background: #7ecffd;
+  position: relative;
+  left: 0;
+  right: 0;
+  box-shadow: 0 4rpx 8rpx 0 rgba(160, 160, 160, 0.4);
+  color: white;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40rpx auto auto auto;
+}
+.titles{
+  height: 200rpx;
+  width: 100%;
+  border-bottom: 1px solid #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contains{
+  border-radius: 8rpx;
+  height: 640rpx;
+  width: 640rpx;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: white;
+}
+.contains input{
+  text-align: right;
+}
+.cover{
+  position: fixed;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7)
+}
+.section{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88rpx;
+  width: 100%;
+  border-bottom: 1px solid #f7f7f7;
+}
+.infoschange{
+  width: 100%;
+  height: 100rpx;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto auto 40rpx auto;
+  background: #7ecffd;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 36rpx;
+  color: white;
+  border: 1px dashed #f7f7f7;
+  box-sizing: border-box;
+}
+.changebtn{
+  height: 88rpx;
+  width: 240rpx;
+  /* border-radius: 50%; */
+  position: relative;
+  margin: 60rpx auto auto auto; 
+  color: white;
+  left: 0;
+  right: 0;
+  background: #7ecffd;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8rpx;
+  box-shadow: 0 4rpx 8rpx 0 rgba(160, 160, 160, 0.4);
+}
+.margin{
+  margin: 0 24rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+/* 获取手机号部分 */
+.wx_phone{
+  position: fixed;
+  bottom: 0px;
+  width: 750rpx;
+  height:800rpx;
+ background-color: #f7f7f7;
+}
+.wx_input{
+  width: 670rpx;
+  height: 100rpx;
+  border: 1px solid #B3B4B4;
+  margin-bottom: 40rpx;
+}
+.wx_input input{
+  margin-left: 10rpx;
+  font-size: 32rpx;
+  height: 100rpx;
+}
+.yzm{
+  width: 400rpx;
+  height: 100rpx;
+  border: 1px solid #B3B4B4;
+  margin-bottom: 40rpx;
+}
+.yzm-right{
+  width: 150rpx;
+  height: 100rpx;
+  font-size: 22rpx;
+  background: #d81e06;
+  margin-bottom: 40rpx;
+  color: white;
+}

@@ -3,7 +3,7 @@
   <!-- 顶部头像 -->
   <view class='top flexct wt100'>
       <image class='img' src='../../imgs/benefit.png'></image>
-      <text class='title'>吴先生</text>
+      <text class='title' bindtap='userinfo'>吴先生</text>
   </view>
   <!-- 订单信息 -->
   <view class='icon flex wt100'>
@@ -14,6 +14,13 @@
   </view>
   <!-- 用户操作 -->
   <view class="weui-cells weui-cells_after-title">
+    <navigator url="../user/usinfo/usinfo" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd">
+        <image src="../../imgs/user/user1.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd">个人资料</view>
+      <view class="weui-cell__ft_in-access"></view>
+    </navigator>
     <navigator url="../user/mycollect/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
         <image src="../../imgs/user/user1.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>

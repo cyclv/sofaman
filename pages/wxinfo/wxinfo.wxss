@@ -1,0 +1,12 @@
+/* pages/wxinfo/wxinfo.wxss */
+.wx_img{
+  width: 700rpx;
+}
+.wx_img image{
+  width: 460rpx;
+  height: 460rpx;
+}
+.btn{
+  margin-top: 40rpx;
+  width: 400rpx;
+}

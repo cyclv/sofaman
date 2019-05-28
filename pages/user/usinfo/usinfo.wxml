@@ -1,0 +1,53 @@
+<!--pages/user/usinfo/usinfo.wxml-->
+<view class="contain" wx:if='{{phone}}'>
+  <view class='titles'>
+       <image class='img' src='{{userinfo.userurl}}'></image>
+  </view>
+  <view class='margin'>
+    <view class='aboutme'>
+        <view class='namebox'>
+            <view class='nameleft'>名字</view>
+            <view class='nameright'>{{userinfo.username}}</view>
+        </view>
+        <view class='phone'>
+             <view class='phoneleft'>电话号码</view>
+            <view class='phoneright'>{{userinfo.userphone}}</view>
+        </view>
+    </view>
+  </view>
+  <view class='upbtn' bindtap='changeinfo'>修改信息</view>
+  <view class='cover' wx:if="{{status==1}}"></view>
+  <form bindsubmit='formsubmit' wx:if="{{status==1}}">
+        <view class='contains'>
+         <view class='infoschange'>信息修改</view>
+          <view class='margin'>
+            <view class="section section_gap">
+              <view class="section__title">姓名：</view>
+              <input name="name" value='{{userinfo.username}}'></input>
+            </view>
+            <view class="section section_gap">
+              <view class="section__title">电话：</view>
+              <input name="phone" value='{{userinfo.userphone}}' ></input>
+            </view>
+        </view>
+        <button form-type='submit' class='changebtn'>提交</button>
+      </view>
+  </form>
+</view>
+<form class='flexct wx_phone' bindsubmit="getphone" wx:else>
+  <view class='wx_input'>
+    <input name='dpname' maxlength='11' placeholder='请输入公司名称' adjust-position></input>
+  </view>
+  <view class='wx_input'>
+    <input name='phone' maxlength='11' placeholder='请输入手机号' adjust-position></input>
+  </view>
+  <view class='flexlb'>
+    <view class='wx_input yzm'>
+      <input name='phone' maxlength='11' placeholder='请输入验证码' adjust-position></input>
+    </view>
+    <view class='yzm-right flexct' bindtap='yzm'>获取验证码</view>
+  </view>
+  <view class='wt100'>为了更好的用户体验，请绑定手机号</view>
+  <button  class='btn mat20' id='tab-con' form-type="submit">绑定手机号</button>
+</form>
+

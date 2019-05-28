@@ -19,6 +19,7 @@ Page({
   onLoad: function (options) {
     this.navigationbarcolor()
   },
+  // 设置标题
   navigationbarcolor: function () {
     wx.setNavigationBarTitle({
       title: '用户中心',
@@ -29,9 +30,14 @@ Page({
       animation: {duration: 100,timingFunc: 'easeIn'}
     })
   },
+  // 订单跳转
   order:function(e){
     var idx = e.currentTarget.dataset.idx
     wx.navigateTo({url:'/pages/shopcar/order/order?idx=' + idx})
+  },
+  //用户详情
+  userinfo:function(){
+    wx.navigateTo({url:'/pages/user/usinfo/usinfo'})
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

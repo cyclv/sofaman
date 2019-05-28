@@ -1,0 +1,9 @@
+<!--pages/wxinfo/wxinfo.wxml-->
+<view class='container'>
+  <view class='mgt80 wt90' style='height:280rpx;'></view>
+  <view class='wx_img flexct'>
+      <image class='wt100' src='../../imgs/benefit.png'></image>
+  </view>
+  <!-- <view class='wt80'>为例更好的用户体验，请您授权进行微信登录</view> -->
+  <button class='mgt80 btn' id='tab-con' open-type='getUserInfo' bindgetuserinfo="getUserInfo">一键微信登录</button>
+</view>
