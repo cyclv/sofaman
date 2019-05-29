@@ -9,16 +9,12 @@ Page({
       { id: 2, img: '../../imgs/top2.png', type: 2, pid: 2 }, 
       { id: 3, img: '../../imgs/top3.png', type: 1, pid: 2 }
     ],
-    goodcl: [{ id: 1, name: '全部' }, { id: 1, name: '新品' }, { id: 1, name: '墩子' }, { id: 1, name: '窗帘盒' }],
+    goodcl: [], //商品分类
     apply: [
       { id: 1, img: '../../imgs/user/index.png', text: '充值钜惠', src: '../index/benefit/benefit' },
       { id: 1, img: '../../imgs/user/user6.png', text: '客服中心', src: '../index/service/service' },
     ],
-    goodsinfo: [
-      { id: "80", goodsname: "轻奢后现代设计师定制换鞋凳不锈钢圆凳子北欧创意沙发等小墩子", price: "1400.00", activityprice: "1.00", goodsimage:'../../imgs/test/good.jpg'},
-      { id: "80", goodsname: "轻奢后现代设计师定制换鞋凳不锈钢圆凳子北欧创意沙发等小墩子", price: "1400.00", activityprice: "1.00", goodsimage: '../../imgs/test/good1.jpg' },
-      { id: "80", goodsname: "轻奢后现代设计师定制换鞋凳不锈钢圆凳子北欧创意沙发等小墩子", price: "1400.00", activityprice: "1.00", goodsimage: '../../imgs/test/good2.jpg' }
-      ],
+    goodsinfo: [], //商品列表
     classifyi:0
   },
   //轮播点击事件
@@ -38,16 +34,32 @@ Page({
     }
   },
   onLoad: function () {
+    const that = this
     // 轮播请求
     base.getrequst('api/home/banner').then(function (res){
       //console.log(res.data)
     })
+    // 分类请求
+    base.getrequst('api/goods/class').then(function (res) {
+      console.log('分类',res.data)
+      that.setData({ goodcl:res.data.list})
+      //查询商品信息
+      that.goosinfo(res.data.list[0].id, 1)
+    })
+  },
+  // 商品信息查询api/goods/list
+  goosinfo:function(id,page){
+    const that = this
+    base.getrequst('api/goods/list', {class_id:id,page:page,size:10}).then(function (res) {
+      console.log('商品信息', res.data)
+      that.setData({ goodsinfo: res.data.list })
+    })
   },
   // 分类点击事件
   cbt:function(e){
-    //console.log(e.currentTarget.dataset.idx)
-    var idx = e.currentTarget.dataset.idx;
-    this.setData({classifyi:idx})
+    var idx = e.currentTarget.dataset;
+    this.setData({classifyi:idx.idx})
+    this.goosinfo(idx.id, 1)  //查询商品请求
   },
   // icon进入详情
   iconbt:function(e){
@@ -55,9 +67,10 @@ Page({
     wx.navigateTo({ url: src})
   },
   // 进入商品详情
-  detailInto:function(){
+  detailInto:function(e){
+    var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../goodsdt/goodsdt'
+      url: '../goodsdt/goodsdt?goods=' + id
     })
   },
   getUserInfo: function(e) {

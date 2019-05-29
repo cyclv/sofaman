@@ -32,10 +32,13 @@
 .mgtop10{
   margin-top: 10rpx;
 }
+.mgl40{
+  margin-left: 40rpx;
+}
 .nothing{
   height: 460rpx;
   line-height: 460rpx;
-  color: #ff0000;
+  color: #d81e06;
   font-size: 30rpx;
 }
 /* 弹性盒子布局 */

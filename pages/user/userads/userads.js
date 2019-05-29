@@ -13,16 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const that = this;
-    const openid = wx.getStorageSync('openid') 
-    bases.getrequst('api/address/list', { openid: openid}).then(function(res){
-      console.log(res)
-      if(res.code == 1103){
-        console.log('没有数据')
-      }else if(res.code == 200){
-        that.setData({list:res.data.list})
-      }
-    })
+    
   },
 
   /**
@@ -42,9 +33,27 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const that = this;
+    const openid = wx.getStorageSync('openid')
+    bases.getrequst('api/address/list', { openid: openid }).then(function (res) {
+      //console.log(res)
+      if (res.code == 1103) {
+        //console.log('没有数据')
+      } else if (res.code == 200) {
+        that.setData({ list: res.data.list })
+      }
+    })
   },
-
+  // 设置默认地址
+  radioChange:function(e){
+    //console.log('地址id', e.detail.value)
+    bases.getrequst('api/address/default',{id:e.detail.value}).then(function (res) {
+      //console.log(res)
+      if (res.code == 200) {
+        wx.showToast({title:'设置为默认地址',mask:true,icon:'success',duration:500})
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

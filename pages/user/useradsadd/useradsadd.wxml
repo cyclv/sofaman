@@ -19,6 +19,6 @@
       <input maxlength='50' name="address" placeholder="请输入收件人详细地址" value='{{adrs.address}}'></input>
     </view>
       <button formType="submit" class="btn">{{adrchange?'新增地址':'保存'}}</button>
-      <button bindtap='delectbtn' class="btn btndelect" wx:if='{{adrchange == false }}'>删除收货地址</button>
+      <button bindtap='delectbtn' data-adsid='{{adrs.id}}' class="btn btndelect" wx:if='{{adrchange == false }}'>删除收货地址</button>
   </form>
 </view>

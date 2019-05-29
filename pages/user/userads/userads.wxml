@@ -7,7 +7,7 @@
     <radio-group class="radio-group" bindchange="radioChange">
       <block wx:for="{{list}}" wx:key="unique">
         <view class='item'>
-          <radio class='radio' checked="{{item.selected == 1?true:false}}" value='{{item.id}}'></radio>
+          <radio class='radio' checked="{{item.selected}}" value='{{item.id}}'></radio>
           <view class='tit'>{{item.username}} {{item.phone}}</view>
           <view class='info'>{{item.address}}</view>
           <view bindtap='addressdt' data-item='{{item}}' class='edit'>编辑</view>

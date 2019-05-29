@@ -13,6 +13,7 @@
     "pages/user/userads/userads",
     "pages/user/useradsadd/useradsadd",
     "pages/shopcar/shopcar",
+    "pages/shopcar/payod/payod",
     "pages/shopcar/order/order",
     "pages/invite/invite",
     "pages/invite/myclient/client",

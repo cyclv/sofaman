@@ -4,8 +4,8 @@
   <view style='height:80rpx;width:750rpx;'></view>
   <scroll-view class='classify' scroll-x>
     <view style='width:1800rpx;'>
-      <view class='classify-item' wx:key="goodcl" wx:for="{{goodcl}}" wx:for-index="idx" bindtap='cbt' data-idx='{{idx}}'>
-        <text class='{{idx==classifyi?"classifyxz":""}}'>{{item.name}}</text>
+      <view class='classify-item' wx:key="goodcl" wx:for="{{goodcl}}" wx:for-index="idx" bindtap='cbt' data-idx='{{idx}}' data-id='{{item.id}}'>
+        <text class='{{idx==classifyi?"classifyxz":""}}'>{{item.class_name}}</text>
       </view>
     </view>  
   </scroll-view>
@@ -25,21 +25,25 @@
   </view>
   <!-- 商品列表 -->
   <view class='wt100 flexct'>
-    <view class='among-content clear flexlb'>
+    <view wx:if='{{goodsinfo.length >= 1}}' class='among-content clear flexlb'>
       <block wx:key="shoplist" wx:for="{{goodsinfo}}" wx:for-index="index">
         <view class="shop-box" data-id='{{item.id}}' bindtap='detailInto'>
           <view class="shop-img">
-              <image class='image-full'  src="{{bannerurl}}{{item.goodsimage}}"></image>  
+              <image class='image-full' src="{{item.image}}"></image>  
           </view>
           <view class="shop-detail">
-              <view class='shop_info'>{{item.goodsname}}</view>
+              <view class='shop_info'>{{item.goods_name}}</view>
               <view class='bottom_info'>
-                <view class='price1'>积分：{{item.price}}</view>
+                <view class='price1'>积分：{{item.integral}}</view>
                 <!-- <view class='price2'>￥{{item.price}}</view> -->
               </view>
           </view>
         </view>
       </block>
+    </view>
+    <!--  -->
+    <view wx:else class='flexct' style='height:600rpx;font-size:28rpx;color:#d81e06;'>
+      该分类下暂无商品，请耐心等待
     </view>
   </view>
 </view>

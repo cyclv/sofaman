@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 7,
 			"list": [
 				{
 					"id": 0,
@@ -91,10 +91,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 7,
 					"name": "商品详情",
 					"pathName": "pages/goodsdt/goodsdt",
-					"query": "",
+					"query": "goods=1",
 					"scene": null
 				},
 				{
@@ -143,6 +143,7 @@
 					"id": -1,
 					"name": "信息完善",
 					"pathName": "pages/user/usinfo/usinfo",
+					"query": "",
 					"scene": null
 				}
 			]

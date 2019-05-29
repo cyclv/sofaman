@@ -33,7 +33,7 @@ swiper{
   height: 400rpx;
 }
 swiper-item image{
- width: 100%;
+  width: 100%;
 }
 /* icon */
 .icon{
@@ -76,7 +76,7 @@ swiper-item image{
   width: 337rpx;
   height: 337rpx;
   display: block;
-  margin: auto
+  margin:10rpx auto;
 }
 .image-full{
   width: 100%;

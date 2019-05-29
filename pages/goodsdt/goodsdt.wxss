@@ -19,6 +19,7 @@ swiper-item image{
   height: 220rpx;
   font-size: 32rpx;
   background: white;
+  width: 100%;
 }
 .if1-price{
   font-size: 36rpx;

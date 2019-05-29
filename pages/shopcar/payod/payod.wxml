@@ -1,0 +1,47 @@
+<!--pages/shopcar/paysod/payod.wxml-->
+<view class='container'>
+  <!-- 购物车 -->
+  <view class='address flexct'>
+    <view wx:if='{{address}}' class='flexsx haveads'>
+      <view class='info'>{{address.username}} <text>{{address.phone}}</text></view>
+      <view class='info info2'>{{address.address}}</view>
+    </view>
+    <view wx:else class='flexlb noads' bindtap='addaddress'>添加收货地址 <text>></text></view>
+  </view>
+  <view class='wt100 addressbg'></view>
+  <!-- 商品信息 -->
+  <view class='goods wt100 flexct'>
+    <block wx:key="shoplist" wx:for="{{shopcar.carts}}" wx:for-index="index">
+    <view class="collect-goods flexlb" bindtap='detailInto' data-id='{{item.goods_id}}'>
+      <view class="img">
+          <image class='wt100' mode='widthFix'  src="{{item.goods.image}}"></image>  
+      </view>
+      <view class="goods-detail">
+          <view class='goods_info'>{{item.goods.goods_name}}</view>
+          <text>数量：{{item.goods_num}}</text><text class='price1 mgl40'>积分：{{item.goods_sku.sku_price}}</text>
+          <view class='bottom_info flexlb'>
+            <view class='price1'>{{item.goods_color.color_name}} {{item.goods_sku.sku_name}}</view>
+          </view>
+      </view>
+    </view>
+  </block>
+  </view>
+  <view class='orderinfo flexct'>
+    <view class="myui-info flexlb wt90">
+      <view class='left flex' >
+        <text class='text'>总金额</text>
+      </view>
+      <view class='right'>￥{{shopcar.total}}</view>
+    </view>
+    <view class="myui-info flexlb wt90">
+      <view class='left flex' >
+        <text class='text'>运费</text>
+      </view>
+      <view class='right'>包邮</view>
+    </view>
+
+    <button class='btn'>微信支付</button>
+    <button class='btn'>积分支付</button>
+  </view>
+
+</view>

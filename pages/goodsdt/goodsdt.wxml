@@ -1,7 +1,7 @@
 <view class='{{goodsdt ? "hiddenscrool": ""}}'>
   <!-- 轮播 -->
   <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000" circular="true">
-    <block wx:for="{{imgUrls}}" wx:key>
+    <block wx:for="{{goodsinfo.goods.banner}}" wx:key>
       <swiper-item>
         <image src="{{item}}" mode="widthFix"/>
       </swiper-item>
@@ -10,8 +10,8 @@
   <view class='container'>
     <!-- 商品标题-->
     <view class='good-info'>
-      <view class='if1'>￥<text class='if1-price'>150-160</text></view>
-      <view class='if2'>轻奢后现代设计师定制换鞋凳不锈钢圆凳子北欧创意沙发等小墩子</view>
+      <view class='if1'>￥<text class='if1-price'>{{goodsinfo.goods.price}}</text></view>
+      <view class='if2'>{{goodsinfo.goods.goods_name}}</view>
     </view>
     <!-- 商品评价-->
     <view class='evaluate flexct'>
@@ -29,11 +29,9 @@
 </view>
 <!-- 底部table -->
 <view class='mytable flexct'>
-  <navigator src="/pages/user/mycollect/index"></navigator>
+  <!-- <navigator src="/pages/user/mycollect/index"></navigator> -->
   <view class='tb1 flexct'><image class='img' src='../../imgs/index/service.png'></image>客服</view>
-  <navigator url="/pages/user/mycollect/index">
-    <view class='tb1 flexct'><image class='img' src='../../imgs/index/collect.png'></image>收藏</view>
-  </navigator>
+  <view class='tb1 flexct'><image class='img' src='../../imgs/index/collect.png' bindtap='collect'></image>收藏</view>
   <navigator url="/pages/shopcar/shopcar" open-type='switchTab'>
     <view class='tb1 flexct'><image class='img' src='../../imgs/index/tab_n2.png'></image>购物车</view>
   </navigator>
@@ -48,7 +46,7 @@
   <view class='good'>
     <view class="close" bindtap='closegoodsdt'><icon type="cancel" size="23"></icon></view>
     <view class="imgbox">
-      <image class='wt100' mode='widthFix' src="{{imgUrls[0]}}"></image>
+      <image class='wt100' mode='widthFix' src="{{goodsinfo.goods.image}}"></image>
     </view>
     <view class="price">
       <view class="pc1">¥180</view>
@@ -61,15 +59,19 @@
     <view class='size-item wt100'>
       <view class='item-tt'>尺寸</view>
       <view class='item-cot'>
-        <view class='content {{sizei==index?"select":""}}' wx:for="{{size}}" wx:key bindtap="slsize" data-idx='{{index}}'>{{item.name}}</view>
+        <view class='content {{sku.id == item.id?"select":""}}' wx:for="{{goodsinfo.sku}}" wx:key bindtap="slsize" data-item='{{item}}'>
+          {{item.sku_name}}
+        </view>
       </view>
       <view class='item-tt'>颜色</view>
       <view class='item-cot'>
-        <view class='content {{colori==index?"select":""}}' wx:for="{{color}}" wx:key bindtap="slcolor" data-idx='{{index}}'>{{item.name}}</view>
+        <view class='content {{color.id == item.id?"select":""}}' wx:for="{{goodsinfo.color}}" wx:key bindtap="slcolor" data-item='{{item}}'>
+          {{item.color_name}}
+        </view>
       </view>
     </view>
   </scroll-view>
   <view class='wt100'>
-    <button class='btn sizebtn'>确定</button>
+    <button class='btn sizebtn' bindtap='payinfo'>确定</button>
   </view>
 </view>

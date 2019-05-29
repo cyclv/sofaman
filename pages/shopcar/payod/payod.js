@@ -1,4 +1,4 @@
-// pages/user/mycollect/index.js
+// pages/shopcar/paysod/payod.js
 const bases = require('../../../utils/base.js') 
 Page({
 
@@ -6,36 +6,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsinfo: []
+    shopcar:'',
+    address:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.selectgoos()
+    const shopcar = JSON.parse(options.shopcar)
+    console.log(shopcar)
+    this.setData({ shopcar: JSON.parse(options.shopcar)})
   },
-  selectgoos:function(){
-    const that = this
-    bases.postrequst('api/collect/list', { openid: wx.getStorageSync('openid') }).then(function (res) {
-      console.log(res.data)
-      that.setData({ goodsinfo: res.data })
-    })
-  },
-  // 进入商品详情
-  detailInto:function(e){
+  addaddress:function(){
     wx.navigateTo({
-      url: '/pages/goodsdt/goodsdt?goods='+ e.currentTarget.dataset.id ,
-    })
-  },
-  //取消收藏
-  collect: function (e) {
-    const that=this
-    bases.goodscollect({ openid: wx.getStorageSync('openid'), goods_id: e.currentTarget.dataset.id }).then(function (res) {
-      if (res.code == 200) {
-        wx.showToast({title: '取消收藏成功',})
-        that.selectgoos()
-      }
+      url: '/pages/user/useradsadd/useradsadd',
     })
   },
   /**
@@ -49,9 +34,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.addresssl()
   },
-
+  addresssl:function(){
+    const that = this
+    bases.getrequst('api/address/selected',{openid:wx.getStorageSync('openid')}).then(function(res){
+      console.log(res.data)
+      if(res.code == 200){that.setData({address:res.data.address})}
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

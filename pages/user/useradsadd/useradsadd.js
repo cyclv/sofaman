@@ -14,10 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    //console.log(options)
     if (options.address){
-      console.log(JSON.parse(options.address))
-      this.setData({adrs: JSON.parse(options.address),adrchange:false})
+      var ads = JSON.parse(options.address);
+      this.setData({ adrs: ads, region: [ads.province,ads.city,ads.area],adrchange:false})
     }else{
       console.log('没有')
     }
@@ -31,10 +31,14 @@ Page({
   },
   //删除收货地址
   delectbtn:function(e){
-    console.log(e.currentTarget)
-    // bases.getrequst('api/address/delete', {id:adid}).then(function (res) {
-    //   console.log(res)
-    // })
+    //console.log(e.currentTarget.dataset.adsid)
+    bases.getrequst('api/address/delete', {id:e.currentTarget.dataset.adsid}).then(function (res) {
+      console.log(res)
+      if(res.code == 200){
+        wx.showToast({title: '删除成功',icon: 'success',duration: 500})
+        wx.navigateBack({delta: 1})
+      }
+    })
   },
   //提交信息
   formSubmit:function(e){
@@ -57,13 +61,21 @@ Page({
       // 判断是修改，还是添加
       if (adrchange){
         bases.postrequst('api/address/add', data).then(function (res) {
-          console.log(res)
+          console.log('添加',res)
+          if (res.code == 200) {
+            wx.showToast({ title: '添加成功', icon: 'success', duration: 500 })
+            wx.navigateBack({ delta: 1 })
+          }
         })
       }else{
         data.id = that.data.adrs.id
-        //console.log(data)
+        console.log('修改',data)
         bases.postrequst('api/address/edit',data).then(function (res) {
-          console.log(res)
+          console.log('修改',res)
+          if (res.code == 200) {
+            wx.showToast({ title: '添加成功', icon: 'success', duration: 500 })
+            wx.navigateBack({ delta: 1 })
+          }
         })
       }
     }

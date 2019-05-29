@@ -2,17 +2,17 @@
 <template name="msgItem">
   <view class='container'>
     <view class='wt100 flexct'>
-      <view class='among-content clear flexlb'>
+      <view class='among-content clear flexct'>
         <block wx:key="shoplist" wx:for="{{goodsinfo}}" wx:for-index="index">
-          <view class="shop-box" data-id='{{item.id}}' bindtap='detailInto'>
-            <view class="shop-img">
-                <image class='image-full'  src="{{bannerurl}}{{item.goodsimage}}"></image>  
+          <view class="collect-goods flexlb" bindtap='detailInto' data-id='{{item.goods_id}}'>
+            <view class="img">
+                <image class='wt100' mode='widthFix'  src="{{item.goods.image}}"></image>  
             </view>
-            <view class="shop-detail">
-                <view class='shop_info'>{{item.goodsname}}</view>
-                <view class='bottom_info'>
-                  <view class='price1'>积分：{{item.price}}</view>
-                  <!-- <view class='price2'>￥{{item.price}}</view> -->
+            <view class="goods-detail">
+                <view class='goods_info'>{{item.goods.goods_name}}</view>
+                <view class='bottom_info flexlb'>
+                  <text class='price1'>积分：{{item.goods.price}}</text>
+                  <view class='btn' catchtap='collect' data-id='{{item.goods_id}}'>取消收藏</view>
                 </view>
             </view>
           </view>

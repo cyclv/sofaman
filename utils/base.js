@@ -4,9 +4,7 @@ function postrequst(url,data) {
     wx.request({
       url:'http://dunge.lyworker.com/' + url,
       data: data,
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
+      header: {"Content-Type": "application/x-www-form-urlencoded"},
       method: "POST",
       success: function (res) {
         // console.log(res)
@@ -21,9 +19,7 @@ function getrequst(url,data) {
     wx.request({
       url: 'http://dunge.lyworker.com/' + url,
       data: data,
-      header: {
-        'content-type': 'application/json'
-      },
+      header: {'content-type': 'application/json'},
       method: "GET",
       success: function (res) {
         resolve(res.data)
@@ -31,7 +27,20 @@ function getrequst(url,data) {
     })
   })
 }
+// 商品收藏取消收藏
+function goodscollect(data) {
+  return new Promise(function (resolve, reject) {
+    wx.request({
+      url: 'http://dunge.lyworker.com/api/collect/add',
+      data: data,
+      header: {"Content-Type": "application/x-www-form-urlencoded"},
+      method: "POST",
+      success: function (res) {resolve(res.data)}
+    })
+  })
+}
 module.exports = {
   postrequst: postrequst,
-  getrequst: getrequst
+  getrequst: getrequst,
+  goodscollect:goodscollect
 }
