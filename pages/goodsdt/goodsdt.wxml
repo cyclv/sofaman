@@ -36,7 +36,7 @@
     <view class='tb1 flexct'><image class='img' src='../../imgs/index/tab_n2.png'></image>购物车</view>
   </navigator>
   <view class='tb4 flexct' bindtap='buynow'>加入购物车</view>
-  <view class='tb4 tb5 flexct' bindtap='buynow'>立刻购买</view>
+  <view class='tb4 tb5 flexct'>立刻购买</view>
 </view>
 <!-- 商品购买属性显示 -->
 <view wx:if="{{goodsdt}}" class='goodsizetop'>

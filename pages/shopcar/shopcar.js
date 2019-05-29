@@ -56,7 +56,7 @@ Page({
   // 加号
   bindPlus: function (e) {
     var shopcarid = parseInt(e.currentTarget.dataset.id);
-    bases.postrequst('api/shopcar/add', {id: shopcarid, value:'puls'}).then(function(res){
+    bases.postrequst('api/shopcar/update', { id: shopcarid, value:'minus'}).then(function(res){
       console.log(res)
     })
     this.sum();

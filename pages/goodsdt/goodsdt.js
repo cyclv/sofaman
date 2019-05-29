@@ -58,8 +58,8 @@ Page({
     const sku = this.data.sku
     const color = this.data.color
     const data = { openid: wx.getStorageSync('openid'), goods_id: color.goods_id,sku_id: sku.id,color_id:color.id}
-    console.log(data)
-    // this.addshopcar(data)
+    // console.log(data)
+    this.addshopcar(data)
   },
 
   // 加入购物车函数
