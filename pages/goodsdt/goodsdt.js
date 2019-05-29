@@ -58,15 +58,15 @@ Page({
     const sku = this.data.sku
     const color = this.data.color
     const data = { openid: wx.getStorageSync('openid'), goods_id: color.goods_id,sku_id: sku.id,color_id:color.id}
-    //console.log(data)
-    this.addshopcar(data)
+    console.log(data)
+    // this.addshopcar(data)
   },
 
   // 加入购物车函数
   addshopcar:function(data){
     const that = this
     bases.postrequst('/api/shopcar/add',data).then(function(res){
-      //console.log('加入购物车情况',res)
+      console.log('加入购物车情况',res)
       if(res.code == 200){
         wx.showToast({title: '成功加入购物车',})
         that.setData({ goodsdt: false})

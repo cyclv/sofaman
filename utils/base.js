@@ -39,8 +39,17 @@ function goodscollect(data) {
     })
   })
 }
+// 用户是否需要授权
+function ifuser() {
+  if (!wx.getStorageSync('userinfo')){
+    wx.navigateTo({
+      url: '/pages/wxinfo/wxinfo',
+    })
+  }
+}
 module.exports = {
   postrequst: postrequst,
   getrequst: getrequst,
-  goodscollect:goodscollect
+  goodscollect:goodscollect,
+  ifuser: ifuser
 }

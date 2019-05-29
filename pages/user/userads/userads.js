@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [{ address_id: 8, user_id: 59, consignee: "曹义超", mobile: '17858412499', provincename: '杭州市,江干区,汽车北站', is_top:true}]
+    list: ''
   },
 
   /**

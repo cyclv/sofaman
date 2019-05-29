@@ -14,8 +14,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({title: '玩命加载中',})
-    this.selectshopcar()
   },
 
   // 减号被禁用时在初始化数据函数
@@ -151,12 +149,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    wx.showLoading({ title: '玩命加载中', })
+    this.selectshopcar()
   },
   // 删除我的商品api/shopcar/delete
   deleteList:function(e){
+    const that= this
     bases.getrequst('api/shopcar/delete',{id:e.currentTarget.dataset.id}).then(function(res){
-      console.log(res)
+      wx.showToast({title: '删除成功',})
+      that.selectshopcar()
     })
   },
   //查询购物车封装
@@ -169,11 +170,11 @@ Page({
           res.data[i].selected = true;
         }
         that.setData({ carts: res.data, hasList: true })
-        wx.hideLoading()
         that.sum()
       }else{
         that.setData({ hasList: false })
       }
+      wx.hideLoading()
     })
   }
 })
