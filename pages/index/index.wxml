@@ -29,7 +29,7 @@
       <block wx:key="shoplist" wx:for="{{goodsinfo}}" wx:for-index="index">
         <view class="shop-box" data-id='{{item.id}}' bindtap='detailInto'>
           <view class="shop-img">
-              <image class='image-full' src="{{item.image}}"></image>  
+              <image class='image-full' src="{{item.image}}" lazy-load='true'></image>  
           </view>
           <view class="shop-detail">
               <view class='shop_info'>{{item.goods_name}}</view>

@@ -9,6 +9,7 @@ page{
   top: 0rpx;
   background: white;
   border-top: 1px solid #f5f5f5;
+  z-index: 1000;
 }
 .classify-item{
   float:left;

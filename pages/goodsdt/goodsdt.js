@@ -9,7 +9,8 @@ Page({
     goodsdt:false, //商品规格弹框
     sku: 1, //规格的id
     color: 1, //颜色的id
-    color_image:''
+    color_image:'',
+    slider:true
   },
 
   /**
@@ -21,6 +22,9 @@ Page({
       console.log('商品信息',res.data)
       that.setData({ goodsinfo: res.data})
     })
+  },
+  imageload:function(e){
+    console.log('加载完成',e.currentTarget.dataset.idx)
   },
   // 立刻购买
   buynow:function(){

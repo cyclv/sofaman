@@ -35,7 +35,6 @@ Page({
   },
   onLoad: function () {
     const that = this
-    base.ifuser();
     // 轮播请求
     base.getrequst('api/home/banner').then(function (res){
       //console.log(res.data)
@@ -43,7 +42,7 @@ Page({
     // 分类请求
     base.getrequst('api/goods/class').then(function (res) {
       //console.log('分类',res.data)
-      that.setData({ goodcl:res.data.list})
+      that.setData({goodcl:res.data.list})
       //查询商品信息
       that.goosinfo(res.data.list[0].id, 1)
     })
@@ -52,7 +51,7 @@ Page({
   goosinfo:function(id,page){
     const that = this
     base.getrequst('api/goods/list', {class_id:id,page:page,size:10}).then(function (res) {
-      console.log('商品信息', res.data)
+      //console.log('商品信息', res.data)
       that.setData({ goodsinfo: res.data.list })
     })
   },

@@ -15,10 +15,12 @@ App({
         dunge.getrequst('api/openid', { js_code: res.code}).then(function(res){
           //console.log(res.data.openid.openid)
           wx.setStorageSync('openid', res.data.openid.openid)
-          dunge.getrequst('api/user', { openid: 12345678911 }).then(function (res) {
-            //console.log('用户信息',res)
+          dunge.getrequst('api/user', { openid: res.data.openid.openid}).then(function (res) {
+            //console.log('用户信息', res.data)
             if(res.code == 200){wx.setStorageSync('userinfo', res.data)}
-            else{wx.setStorageSync('userinfo',false)}
+            else {
+              wx.setStorageSync('userinfo', false)
+              wx.navigateTo({url: '/pages/wxinfo/wxinfo',})}
           })
         })
       }
