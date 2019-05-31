@@ -27,7 +27,7 @@
     </view> -->
   </view>
   <view class='wt100 flexct'>
-    <view class='wt100 flexct' wx:for='{{goodsinfo.goods.detail}}'>
+    <view class='wt100 flexct' wx:for='{{goodsinfo.goods.detail}}' wx:key>
       <image class='wt100' src='{{item}}' mode='widthFix' lazy-load='true'></image>
     </view>
   </view>

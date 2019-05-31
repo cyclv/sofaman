@@ -16,7 +16,7 @@
         <view class='stepper-box'>
           <view><text>￥{{item.goods_sku.sku_price}}</text></view>
           <view class="stepper">
-            <!-- 减号 --><text class="{{minusStatuses[index]}}" disabled="true" data-index="{{index}}" bindtap="bindMinus">-</text>
+            <!-- 减号 --><text class="{{minusStatuses[index]}}" disabled="true" data-id="{{item.id}}" bindtap="bindMinus">-</text>
             <!-- 数值 --><input disabled maxlength='5' class="number" type="number" data-index="{{index}}" value="{{item.goods_num}}"/>  
             <!-- 加号 --><text class="normal" data-id="{{item.id}}" bindtap="bindPlus">+</text>
           </view>

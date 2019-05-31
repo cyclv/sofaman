@@ -11,16 +11,16 @@
   <view class='wt100 addressbg'></view>
   <!-- 商品信息 -->
   <view class='goods wt100 flexct'>
-    <block wx:key="shoplist" wx:for="{{shopcar.carts}}" wx:for-index="index">
+    <block wx:key="shoplist" wx:for="{{shopcar.goods}}" wx:for-index="index">
     <view class="collect-goods flexlb" bindtap='detailInto' data-id='{{item.goods_id}}'>
       <view class="img">
-          <image class='wt100' mode='widthFix'  src="{{item.goods.image}}"></image>  
+          <image class='wt100' mode='widthFix'  src="{{item.image}}"></image>  
       </view>
       <view class="goods-detail">
-          <view class='goods_info'>{{item.goods.goods_name}}</view>
-          <text>数量：{{item.goods_num}}</text><text class='price1 mgl40'>积分：{{item.goods_sku.sku_price}}</text>
+          <view class='goods_info'>{{item.goods_name}}</view>
+          <text>数量：{{item.goods_num}}</text><text class='price1 mgl40'>积分：{{item.amount}}</text>
           <view class='bottom_info flexlb'>
-            <view class='price1'>{{item.goods_color.color_name}} {{item.goods_sku.sku_name}}</view>
+            <view class='price1'>{{item.color_name}} {{item.sku_name}}</view>
           </view>
       </view>
     </view>

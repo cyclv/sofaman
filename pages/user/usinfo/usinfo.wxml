@@ -36,7 +36,7 @@
 </view>
 <form class='flexct wx_phone' bindsubmit="getphone" wx:else>
   <view class='wx_input'>
-    <input name='dpname' maxlength='11' placeholder='请输入公司名称' adjust-position></input>
+    <input name='dpname' maxlength='11' placeholder='请输入姓名' adjust-position></input>
   </view>
   <view class='wx_input'>
     <input name='phone' maxlength='11' placeholder='请输入手机号' adjust-position></input>
@@ -47,7 +47,7 @@
     </view>
     <view class='yzm-right flexct' bindtap='yzm'>获取验证码</view>
   </view>
-  <view class='wt100'>为了更好的用户体验，请绑定手机号</view>
-  <button  class='btn mat20' id='tab-con' form-type="submit">绑定手机号</button>
+  <view class='wt100'>为了更好的用户体验，完善用户信息</view>
+  <button  class='btn mat20' id='tab-con' form-type="submit">完善资料</button>
 </form>
 

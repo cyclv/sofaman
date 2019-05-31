@@ -14,9 +14,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const shopcar = JSON.parse(options.shopcar)
-    console.log(shopcar)
-    this.setData({ shopcar: JSON.parse(options.shopcar)})
+    const that = this
+    bases.getrequst('api/shopcar/js', { openid: wx.getStorageSync('openid'), js_type:'shopcar'}).then(function (res) {
+      console.log(res)
+      if (res.code == 200) { that.setData({ shopcar: res.data }) }
+    })
   },
   addaddress:function(){
     wx.navigateTo({
@@ -36,6 +38,7 @@ Page({
   onShow: function () {
     this.addresssl()
   },
+  // 收货地址
   addresssl:function(){
     const that = this
     bases.getrequst('api/address/selected',{openid:wx.getStorageSync('openid')}).then(function(res){
