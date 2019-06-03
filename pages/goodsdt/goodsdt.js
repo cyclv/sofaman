@@ -7,10 +7,12 @@ Page({
   data: {
     goodsinfo:'', //商品信息
     goodsdt:false, //商品规格弹框
+    buytype: 1, //购买类型
     sku: 1, //规格的id
     color: 1, //颜色的id
     color_image:'',
-    slider:true
+    slider:true,
+    goods_num:1
   },
 
   /**
@@ -24,12 +26,12 @@ Page({
     })
   },
   imageload:function(e){
-    console.log('加载完成',e.currentTarget.dataset.idx)
+    //console.log('加载完成',e.currentTarget.dataset.idx)
   },
   // 立刻购买
-  buynow:function(){
-    console.log(111)
-    this.setData({goodsdt:true})
+  buynow:function(e){
+    const type = e.currentTarget.dataset.type
+    this.setData({goodsdt:true,buytype: type})
   },
   //尺寸选择
   slsize:function(e){
@@ -58,12 +60,26 @@ Page({
     })
   },
   //购买按钮
-  payinfo:function(){
+  payinfo:function(e){
+    const type = this.data.buytype
     const sku = this.data.sku
     const color = this.data.color
-    const data = { openid: wx.getStorageSync('openid'), goods_id: color.goods_id,sku_id: sku.id,color_id:color.id}
-    // console.log(data)
-    this.addshopcar(data)
+    if (!color.id){
+      wx.showToast({ title: '选择颜色', icon: 'loading'})
+    }else if (!sku.id){
+      wx.showToast({ title: '请选择尺寸',icon:'loading'})
+    }else if(type == 1){
+      const data = { openid: wx.getStorageSync('openid'), goods_id: color.goods_id, sku_id: sku.id, color_id: color.id }
+      this.addshopcar(data)
+    } else if (type == 2) {
+      
+      const gdsinfo = this.data.goodsinfo
+      gdsinfo.sku = sku
+      gdsinfo.color = color
+      gdsinfo.goods.goods_num = this.data.goods_num
+      console.log(JSON.stringify(gdsinfo))
+      wx.navigateTo({ url: '/pages/shopcar/payod/payod?gdsinfo=' + JSON.stringify(gdsinfo)})
+    }
   },
 
   // 加入购物车函数
@@ -83,7 +99,22 @@ Page({
   onReady: function () {
 
   },
-
+  // 减号
+  bindMinus: function () {
+    var num = this.data.goods_num
+    if(num > 1){
+      this.setData({ goods_num: num - 1 })
+    }else{
+      wx.showToast({
+        title: '数量不能小于1',icon:'loading'
+      })
+    }
+  },
+  // 加号
+  bindPlus:function(){
+    var num = this.data.goods_num
+    this.setData({ goods_num: num + 1})
+  },
   /**
    * 生命周期函数--监听页面显示
    */

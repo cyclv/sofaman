@@ -7,23 +7,43 @@ Page({
    */
   data: {
     shopcar:'',
-    address:''
+    address:'',
+    paynow:true,
+    gdsinfo:'',
+    total:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var gdsinfo = JSON.parse(options.gdsinfo)
+    console.log(gdsinfo 
+    )
+    if (options.gdsinfo){
+      this.setData({ paynow: false, gdsinfo: gdsinfo})
+      this.sum()
+    }
+  },
+  // 查询购物车
+  selectgoods:function(){
     const that = this
-    bases.getrequst('api/shopcar/js', { openid: wx.getStorageSync('openid'), js_type:'shopcar'}).then(function (res) {
-      console.log(res)
+    bases.getrequst('api/shopcar/js', { openid: wx.getStorageSync('openid'), js_type: 'shopcar' }).then(function (res) {
       if (res.code == 200) { that.setData({ shopcar: res.data }) }
     })
   },
+  // 购车地址跳转
   addaddress:function(){
     wx.navigateTo({
       url: '/pages/user/useradsadd/useradsadd',
     })
+  },
+  //sum计算价格
+  sum:function(){
+    const gdsinfo = this.data.gdsinfo
+    const price = gdsinfo.sku.sku_price
+    const num = gdsinfo.sku.sku_price
+    this.setData({ total: price * num})
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -44,6 +64,23 @@ Page({
     bases.getrequst('api/address/selected',{openid:wx.getStorageSync('openid')}).then(function(res){
       console.log(res.data)
       if(res.code == 200){that.setData({address:res.data.address})}
+    })
+  },
+  pay:function(){
+    const adid = this.data.address.id
+    bases.postrequst('api/order/add', { openid: wx.getStorageSync('openid'), address_id: adid, payment:'wechat'}).then(function(res){
+      console.log(res)
+    })
+  },
+  paytwo:function(){
+    const adid = this.data.address.id
+    const gdif = this.data.gdsinfo 
+    console.log(gdif)
+    const data = { openid: wx.getStorageSync('openid'), address_id: adid, payment: 'wechat',
+      goods_id: gdif.sku.goods_id, sku_id: gdif.sku.id, color_id: gdif.color.id, goods_num: gdif.goods.goods_num}
+    console.log(data)
+    bases.postrequst('api/order/buy',data).then(function (res) {
+      console.log(res)
     })
   },
   /**

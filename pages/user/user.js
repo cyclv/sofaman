@@ -17,7 +17,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.navigationbarcolor()
+    const usinfo = wx.getStorageSync('userinfo')
+    if (usinfo.user_type == 1){ 
+      wx.showModal({
+        title: '温馨提示',
+        content: '为了更好的使用小程序，请完善个人信息。',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({ url: '/pages/user/usinfo/usinfo',})
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
   },
   // 设置标题
   navigationbarcolor: function () {

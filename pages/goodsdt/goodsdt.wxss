@@ -160,3 +160,65 @@ swiper-item image{
   background: #F23619;
   color: white
 }
+
+
+/*加减号控制数量*/
+.stepper-box{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.stepper-box>view:first-child{
+  color: #A0A0A0;
+  font-size: 22rpx;
+  margin-top: 15rpx;
+}
+.stepper-box>view:first-child text{
+  color: #426666;
+  font-size: 32rpx;
+}
+.stepper{
+  width: 200rpx;
+  display: flex;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 10rpx;
+}
+
+.stepper text{
+  display: block;
+  width: 52rpx;
+  height: 52rpx;
+  border:1px solid transparent;
+  line-height: 50rpx;
+  color: #333;
+  background-color: #f7f7f7;
+}
+.stepper text.normal{
+  border:1px solid transparent; 
+}
+.stepper text.disabled{
+  /* border:1px solid rgba(221,221,221,0.3); */
+  color: #ccc;
+
+}
+.stepper .number{
+  width: 100rpx;
+  font-size: 28rpx;
+  height: 50rpx;
+   border: 1px solid transparent; 
+  background-color: #F7F7F7;
+  line-height: 50rpx;
+  color: #333333;
+  margin: 0 2px;
+}
+.stepper text:first-child{
+  border-right: none;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.stepper text:last-child{
+  border-left: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
