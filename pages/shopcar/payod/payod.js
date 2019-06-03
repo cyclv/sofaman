@@ -17,19 +17,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var gdsinfo = JSON.parse(options.gdsinfo)
-    console.log(gdsinfo 
-    )
+    console.log(options )
     if (options.gdsinfo){
+      var gdsinfo = JSON.parse(options.gdsinfo)
       this.setData({ paynow: false, gdsinfo: gdsinfo})
       this.sum()
+    }else{
+      this.selectgoods()
     }
   },
   // 查询购物车
   selectgoods:function(){
     const that = this
     bases.getrequst('api/shopcar/js', { openid: wx.getStorageSync('openid'), js_type: 'shopcar' }).then(function (res) {
-      if (res.code == 200) { that.setData({ shopcar: res.data }) }
+      if (res.code == 200) { that.setData({ paynow: true,shopcar: res.data }) }
     })
   },
   // 购车地址跳转

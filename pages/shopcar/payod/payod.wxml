@@ -44,7 +44,7 @@
     <button class='btn'>积分支付</button>
   </view>
 </view>
-<view class='container'>
+<view class='container' wx:else>
   <!-- 购物车 -->
   <view class='address flexct'>
     <view wx:if='{{address}}' class='flexsx haveads'>
