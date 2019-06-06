@@ -2,30 +2,37 @@
 <view class='container'>
   <!-- 订单分类 -->
   <view class='top flexct wt100'>
-    <view class='item flexct' wx:for="{{ordercl}}" bindtap='ordercl' data-idx='{{index}}' wx:key>
+    <view class='item flexct' wx:for="{{ordercl}}" bindtap='ordercl' data-id='{{item.id}}' data-idx='{{index}}' wx:key>
       <text class='{{index==selectcl?"selectcl":""}}'>{{item.name}}</text>
     </view>
   </view>
   <!-- 订单展示 -->
-  <view class='order' wx:if="{{orderinfo}}">
-    <view class='od-top'>订单编号：12316546</view>
-    <view class='good flex' wx:for='{{carts}}' wx:key>
-      <view class='left'>
-        <image src='{{item.goodsimage}}' class='wt100' mode='widthFix'></image>
+  <view class='flexct wt100' style='background: #f5f5f5'>
+  <view wx:if="{{orderinfo}}">
+    <view class='order' wx:for='{{carts}}' wx:for-item='items' wx:key>
+      <view class='od-top'>订单编号：{{items.order_sn}}</view>
+      <view class='good flex' wx:for='{{items.order_goods}}'wx:for-item='item' wx:key>
+        <view class='left'>
+          <image src='{{item.goods_image}}' class='wt100' mode='widthFix'></image>
+        </view>
+        <view class='right'>
+          <view class='info1'>{{item.goods_name}}</view>
+          <view class='info2 mgtop10'>{{item.sku_name}} , {{item.color_name}}</view>
+          <view class='info3 mgtop10'><text>￥:{{item.sku_price}}</text> <text class='inf'>X{{item.goods_num}}</text></view>
+        </view>
       </view>
-      <view class='right'>
-        <view class='info1'>{{item.goodsname}}</view>
-        <view class='info2 mgtop10'>型号1000;白色</view>
-        <view class='info3 mgtop10'><text>￥:{{item.price}}</text> <text class='inf'>X{{item.status}}</text></view>
+      <view class='od-bom'>
+        <view class='btn' wx:if="{{items.order_status == 0}}" bindtap='payagin' data-odid='{{items.id}}'>付款</view>
+        <view class='btn btn2' wx:if="{{items.order_status == 0}}" bindtap='colsepay' data-odid='{{items.id}}'>取消订单</view>
+        <view class='btn btn2' wx:if="{{items.order_status == -1}}">已取消</view>
       </view>
-    </view>
-    <view class='od-bom'>
-      <view class='btn'>付款</view>
+      <view class='wt100'></view>
     </view>
   </view>
   <!-- 暂无订单 -->
   <view class='no-order flexct wt100' wx:else>
     您还没有相关订单
+  </view>
   </view>
 </view>
 

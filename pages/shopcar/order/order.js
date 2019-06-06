@@ -1,16 +1,14 @@
 // pages/shopcar/order/order.js
+const bases = require('../../../utils/base.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    ordercl: [{ id: 1, name: '所有订单' },{id: 1, name: '待支付' }, { id: 1, name: '待收货' },{ id: 1,name:'待评价'}],
+    ordercl: [{ id: 'all', name: '所有订单' },{id: 0, name: '待支付' }, { id: 1, name: '待收货' },{ id: 1,name:'待评价'}],
     selectcl:0,
-    carts: [
-      { id: "80", goodsname: "轻奢后现代设计师定制换鞋凳不锈钢圆凳子北欧创意沙发等小墩子", price: "1400.00", goodsimage: '../../../imgs/test/good.jpg', status: 1 },
-      { id: "80", goodsname: "轻奢后现代设计师定制换鞋凳不锈钢圆凳子北欧创意沙发等小墩子", price: "1400.00", goodsimage: '../../../imgs/test/good.jpg', status: 1 }
-    ],
+    carts:'',
     orderinfo:true
   },
   /**
@@ -18,11 +16,42 @@ Page({
    */
   onLoad: function (options) {
     console.log(options.idx)
+    this.selectod('all')
   },
   ordercl:function(e){
-    var idx = e.currentTarget.dataset.idx
-    console.log(idx)
-    this.setData({selectcl:idx})
+    var dataset = e.currentTarget.dataset
+    console.log(dataset)
+    this.setData({ selectcl:dataset.idx})
+    this.selectod(dataset.id)
+  },
+  //订单信息查询
+  selectod:function(idx){
+    const that = this
+    bases.getrequst('api/order/list', { openid: wx.getStorageSync('openid'), status: idx, page: 1, size: 10 }).then(function (res) {
+      console.log(res)
+      if (res.code == 200){
+        that.setData({ orderinfo:true,carts: res.data.data })
+      }else if (res.code == 1003){
+        that.setData({orderinfo:false})
+      }
+    })
+  },
+  // 再次付款
+  payagin:function(e){
+    var data = e.currentTarget.dataset
+    wx.navigateTo({
+      url: '/pages/shopcar/payagain/payagain?odid=' + data.odid,
+    })
+  },
+  // 取消订单colsepay
+  colsepay: function (e) {
+    var that = this
+    var data = e.currentTarget.dataset
+    bases.postrequst('api/order/close',{order_id:data.odid}).then(function (res) {
+      if (res.code == 200) {
+        that.selectod('all')
+      } 
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

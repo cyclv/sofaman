@@ -1,0 +1,7 @@
+<!--pages/shopcar/payagain/payagain.wxml-->
+<view class='container'>
+  <view class='flexct'>
+    <view bindtap='payagain' data-type='integral'>积分付款</view>
+    <view bindtap='payagain' data-type='wechat'>微信付款</view>
+  </view>
+</view>

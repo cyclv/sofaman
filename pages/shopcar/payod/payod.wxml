@@ -39,9 +39,14 @@
       </view>
       <view class='right'>包邮</view>
     </view>
-
-    <button class='btn' bindtap='pay'>微信支付</button>
-    <button class='btn'>积分支付</button>
+    <view class="myui-info flexlb wt90">
+      <view class='left flex' >
+        <text class='text'>剩余积分</text>
+      </view>
+      <view class='right'>{{usinfo.score}}</view>
+    </view>
+    <button class='btn' bindtap='pay' data-type='wechat'>微信支付</button>
+    <button class='btn' bindtap='pay' data-type='integral'>积分支付</button>
   </view>
 </view>
 <view class='container' wx:else>
@@ -84,8 +89,13 @@
       </view>
       <view class='right'>包邮</view>
     </view>
-
-    <button class='btn' bindtap='paytwo'>微信支付</button>
-    <button class='btn'>积分支付</button>
+    <view class="myui-info flexlb wt90">
+      <view class='left flex' >
+        <text class='text'>剩余积分</text>
+      </view>
+      <view class='right'>{{usinfo.score}}</view>
+    </view>
+    <button class='btn' bindtap='paytwo' data-type='wechat'>微信支付</button>
+    <button class='btn' bindtap='paytwo' data-type='integral'>积分支付</button>
   </view>
 </view>

@@ -14,6 +14,7 @@
     "pages/user/useradsadd/useradsadd",
     "pages/shopcar/shopcar",
     "pages/shopcar/payod/payod",
+    "pages/shopcar/payagain/payagain",
     "pages/shopcar/order/order",
     "pages/invite/invite",
     "pages/invite/myclient/client",

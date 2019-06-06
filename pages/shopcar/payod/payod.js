@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    usinfo:'',
     shopcar:'',
     address:'',
     paynow:true,
@@ -44,7 +45,8 @@ Page({
     const gdsinfo = this.data.gdsinfo
     const price = gdsinfo.sku.sku_price
     const num = gdsinfo.sku.sku_price
-    this.setData({ total: price * num})
+    const usinfo = wx.getStorageSync('userinfo')
+    this.setData({ total: price * num, usinfo: usinfo})
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -67,23 +69,65 @@ Page({
       if(res.code == 200){that.setData({address:res.data.address})}
     })
   },
-  pay:function(){
+  //购物车购买
+  pay:function(e){
+    var that = this
     const adid = this.data.address.id
-    bases.postrequst('api/order/add', { openid: wx.getStorageSync('openid'), address_id: adid, payment:'wechat'}).then(function(res){
-      console.log(res)
-    })
+    const type = e.currentTarget.dataset.type
+    const data = { openid: wx.getStorageSync('openid'), address_id: adid, payment: type}
+    console.log(data)
+    bases.postrequst('api/order/add',data).then(function (res) {
+        console.log(res)
+        if (type == 'wechat') {
+          that.wxpay(res.data)
+        } else {
+          // 积分购买
+          console.log('积分购买')
+          if (res.code == 1022){
+            wx.showToast({title: '积分不足',})
+          }
+        }
+      })
   },
-  paytwo:function(){
+  // 直接购买
+  paytwo: function(e){
+    const type = e.currentTarget.dataset.type
+    console.log(type)
     const adid = this.data.address.id
     const gdif = this.data.gdsinfo 
-    console.log(gdif)
-    const data = { openid: wx.getStorageSync('openid'), address_id: adid, payment: 'wechat',
-      goods_id: gdif.sku.goods_id, sku_id: gdif.sku.id, color_id: gdif.color.id, goods_num: gdif.goods.goods_num}
+    var that = this
+    const data = {openid: wx.getStorageSync('openid'), address_id: adid, payment: type,goods_id: gdif.sku.goods_id, sku_id: gdif.sku.id, color_id: gdif.color.id, goods_num: gdif.goods.goods_num}
     console.log(data)
     bases.postrequst('api/order/buy',data).then(function (res) {
       console.log(res)
+      if (type == 'wechat') {
+        that.wxpay(res.data)
+      } else {
+        // 积分购买
+        console.log('积分购买')
+      }
     })
   },
+  // 微信小程序支付方式
+  wxpay:function(data){
+    wx.requestPayment({
+      timeStamp: data.timeStamp,
+      nonceStr: data.nonceStr,
+      package: data.package,
+      signType: 'MD5',
+      paySign: data.paySign,
+      success(res) { 
+        console.log(res)
+        // 支付成功
+      },
+      fail(res) {
+        console.log(res)
+        // 支付失败
+      }
+    })
+  },
+  // 积分支付
+
   /**
    * 生命周期函数--监听页面隐藏
    */

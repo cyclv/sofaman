@@ -2,7 +2,7 @@
 function postrequst(url,data) {
   return new Promise(function (resolve, reject) {
     wx.request({
-      url:'http://dunge.lyworker.com/' + url,
+      url:'https://api.lyworker.com/' + url,
       data: data,
       header: {"Content-Type": "application/x-www-form-urlencoded"},
       method: "POST",
@@ -17,7 +17,7 @@ function postrequst(url,data) {
 function getrequst(url,data) {
   return new Promise(function (resolve, reject) {
     wx.request({
-      url: 'http://dunge.lyworker.com/' + url,
+      url: 'https://api.lyworker.com/' + url,
       data: data,
       header: {'content-type': 'application/json'},
       method: "GET",
@@ -31,7 +31,7 @@ function getrequst(url,data) {
 function goodscollect(data) {
   return new Promise(function (resolve, reject) {
     wx.request({
-      url: 'http://dunge.lyworker.com/api/collect/add',
+      url: 'https://api.lyworker.com/api/collect/add',
       data: data,
       header: {"Content-Type": "application/x-www-form-urlencoded"},
       method: "POST",

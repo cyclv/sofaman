@@ -1,0 +1,4 @@
+/* pages/shopcar/payagain/payagain.wxss */
+page{
+  height: 100%;
+}

@@ -47,7 +47,7 @@ Page({
   },
   // 关闭选择规格
   closegoodsdt:function(){
-    this.setData({ goodsdt: false })
+    this.setData({ goodsdt: false, buytype:1})
   },
   //商品收藏/api/collect/add
   collect:function(){

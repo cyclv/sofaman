@@ -74,8 +74,8 @@
           {{item.color_name}}
         </view>
       </view>
-      <view class='item-tt'>数量</view>
-      <view class="wt100">
+      <view class='item-tt' wx:if='{{buytype == 2}}'>数量</view>
+      <view class="wt100" wx:if='{{buytype == 2}}'>
         <view class='stepper'>
           <!-- 减号 --><text class="{{minusStatuses[index]}}" disabled="true" data-id="{{item.id}}" bindtap="bindMinus">-</text>
           <!-- 数值 --><input disabled maxlength='5' class="number" type="number" data-index="{{index}}" value="{{goods_num}}"/>  

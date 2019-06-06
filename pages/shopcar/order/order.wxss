@@ -1,8 +1,5 @@
 /* pages/shopcar/order/order.wxss */
 /* 订单分类 */
-page{
-  background: #f5f5f5;
-}
 .top{
   height: 60rpx;
   font-size: 26rpx;
@@ -23,6 +20,10 @@ page{
   background: white;
   border-radius: 10rpx;
   padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+.order:first-child{
+  margin-top: 20rpx;
 }
 .order .od-top{
   width: 100%;
@@ -65,6 +66,14 @@ page{
   height: 50rpx;
   width: 100rpx;
   border-radius: 10rpx;
+}
+.btn2{
+  height: 50rpx;
+  width: 140rpx;
+  border-radius: 10rpx;
+  background: white;
+  color:#A0A0A0;
+  margin-left: 20rpx;
 }
 .no-order{
  height: 600rpx;
