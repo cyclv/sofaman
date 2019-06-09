@@ -1,6 +1,6 @@
 <!--pages/invite/invite.wxml-->
 <view class='container'>
-  <view class='wt100'><image class='wt100' mode='widthFix' src='../../imgs/benefit.png'></image> </view>
+  <view class='wt100'><image class='wt100' mode='widthFix' src='{{list.image}}'></image> </view>
   <button class='btn mypp' open-type="share">立刻邀请微信好友</button>
   <view class='rule'>
     <view> 1.从未使用墩哥的好友，在接受邀请后，完成首笔充值并收货完成；</view>

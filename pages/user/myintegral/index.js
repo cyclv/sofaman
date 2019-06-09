@@ -1,4 +1,5 @@
 // pages/user/myintegral/index.js
+const bases = require('../../../utils/base.js')
 Page({
 
   /**
@@ -9,29 +10,33 @@ Page({
       {id:1,title:'充值积分',size:'80',time:'2018-05-20 11:20',type:'审核通过'},
       { id: 2, title: '邀请新商户', size: '80', time: '2018-05-20 11:20', type: '审核中' }  
     ],
-    content1:[
-      {id:1,title:'充值积分',size:'80',time:'2018-05-20 11:20',type:'审核通过'},
-      { id: 2, title: '邀请新商户', size: '80', time: '2018-05-20 11:20', type: '审核中' }  
-    ],
-    content2: [
-      { id: 1, title: '购买商品', size: '1200', time: '2018-05-20 11:20'},
-      { id: 2, title: '购买商品', size: '660', time: '2018-05-20 11:20'}
-    ],
-    ctselect:true
+    userct:'',
+    ctselect:1,
+    userinfo:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var userinfo = wx.getStorageSync('userinfo')
+    //console.log(userinfo)
+    this.setData({ userinfo:userinfo})
+    var that = this;
+    bases.postrequst('api/bill/list',{openid:wx.getStorageSync('openid')}).then(function(res){
+      //console.log(res.data)
+      if(res.code = 200){
+        that.setData({ userct: res.data, content: res.data.record.list})
+      }
+    })
   },
   ctbind:function(e){
     var idx = e.currentTarget.dataset.idx
+    //console.log(this.data.userct.record.list)
     if(idx == 1){
-      this.setData({ ctselect: idx, content: this.data.content1})
+      this.setData({ ctselect: idx, content: this.data.userct.record.list})
     }else{
-      this.setData({ ctselect: idx, content:''})
+      this.setData({ ctselect:idx, content: this.data.userct.bill.list})
     }
   },
   /**

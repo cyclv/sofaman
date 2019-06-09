@@ -18,7 +18,8 @@ Page({
    */
   onLoad: function (options) {
     const usinfo = wx.getStorageSync('userinfo')
-    if (usinfo.user_type == 1){ 
+    //console.log(usinfo)
+    if (!usinfo.phone){ 
       wx.showModal({
         title: '温馨提示',
         content: '为了更好的使用小程序，请完善个人信息。',

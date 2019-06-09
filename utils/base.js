@@ -39,8 +39,23 @@ function goodscollect(data) {
     })
   })
 }
+// get 活动列表
+function activelist(url, data) {
+  return new Promise(function (resolve, reject) {
+    wx.request({
+      url: 'https://api.lyworker.com/api/activity/list',
+      data: data,
+      header: { 'content-type': 'application/json' },
+      method: "GET",
+      success: function (res) {
+        resolve(res.data)
+      }
+    })
+  })
+}
 module.exports = {
   postrequst: postrequst,
   getrequst: getrequst,
-  goodscollect:goodscollect
+  goodscollect:goodscollect,
+  activelist: activelist
 }

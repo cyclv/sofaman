@@ -20,14 +20,13 @@ Page({
   //轮播点击事件
   sliderbtn: function(e) {
     var info = e.currentTarget.dataset.item
-    console.log(info)
-    if (info.type == 1){
+    if (info.type == 'recharge'){
       wx.navigateTo({
         url:'/pages/index/benefit/benefit'
       })
-    } else if (info.type == 2){
+    } else if (info.type == 'activity'){
       wx.navigateTo({
-        url:'/pages/goodsdt/goodsdt'
+        url: '/pages/goodsdt/goodsdt?goods=' + info.html_url
       })
     }else{
       console.log('没有跳转')
@@ -38,6 +37,7 @@ Page({
     // 轮播请求
     base.getrequst('api/home/banner').then(function (res){
       //console.log(res.data)
+      that.setData({ imgUrls:res.data.banner})
     })
     // 分类请求
     base.getrequst('api/goods/class').then(function (res) {

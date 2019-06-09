@@ -18,10 +18,11 @@ Page({
   getUserInfo: function (e) {
     var userinfo = e.detail.userInfo;
     let user = wx.getStorageSync('openid')
+    let parentid = wx.getStorageSync('parentid')
     console.log(user,userinfo)
     // 用户注册封装
-    bases.postrequst('api/login', { openid: user, avatar: userinfo.avatarUrl, nickname: userinfo.nickName }).then(function (res) {
-      console.log(res.data.user)
+    bases.postrequst('api/login', { openid: user, avatar: userinfo.avatarUrl, nickname: userinfo.nickName, parent_id:parentid}).then(function (res) {
+      console.log('用户信息',res.data.user)
       if (res.data.user) {
         wx.setStorageSync('userinfo', res.data.user);
         wx.navigateBack({

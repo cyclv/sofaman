@@ -1,4 +1,5 @@
-// pages/invite/invite.js
+ // pages/invite/invite.js
+const bases = require('../..//utils/base.js')
 Page({
 
   /**
@@ -12,7 +13,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    bases.activelist().then(function (res) {
+      //console.log(res.data[0])
+      that.setData({ list: res.data[1] })
+    })
   },
 
   /**
@@ -61,6 +66,13 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-      
+    var user = wx.get
+    return {
+      title: '让您的店铺赚钱的神器',
+      path: '/pages/index/index?parentid=' + JSON.stringify(this.data.item),
+      success: function (res) {
+        console.log(res)
+      }
+    }
   }
 })

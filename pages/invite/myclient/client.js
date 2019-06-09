@@ -1,4 +1,5 @@
 // pages/invite/myclient/client.js
+const bases = require('../../../utils/base.js')
 Page({
 
   /**
@@ -12,7 +13,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    bases.getrequst('api/customer',{openid:wx.getStorageSync('openid')}).then(function(res){
+      console.log(res)
+      if(res.code == 1003){
+        console.log('暂无数据')
+      }
+    })
   },
   clientdt:function(e){
     var info = e.currentTarget.dataset.info;

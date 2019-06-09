@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ordercl: [{ id: 'all', name: '所有订单' },{id: 0, name: '待支付' }, { id: 1, name: '待收货' },{ id: 1,name:'待评价'}],
+    ordercl: [{ id: 'all', name: '所有订单' },{id: 0, name: '待支付' }, { id: 1, name: '待收货' },{ id: 3,name:'待评价'}],
     selectcl:0,
     carts:'',
     orderinfo:true

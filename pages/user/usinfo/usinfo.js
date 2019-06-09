@@ -1,18 +1,29 @@
 let app = getApp();
-var bases = require('../../../utils/util.js');
+var bases = require('../../../utils/base.js');
 Page({
   data: {
     api: app.globalData.hpUrl,
-    userinfo: { id: 1, userurl:'../../../imgs/benefit.png',username: '张三0', userphone:'17858412499'},
+    userinfo: wx.getStorageSync("userinfo"),
     status: 0,
-    phone: true
+    phone: true,
+    yzphone:''
   },
   // yzm
   yzm:function(){
-    console.log(111)
+    var phone = this.data.yzphone
+    console.log(phone)
+    if (!(/^1(3|4|5|7|8)\d{9}$/.test(phone))) {
+      wx.showToast({title: '电话号码有误',icon: 'loading',duration: 500})
+    }else{
+      bases.postrequst('api/sms',{openid:wx.getStorageSync('openid'),phone:phone}).then(function (res){
+        console.log(res)
+      })
+    }
   },
   // 提交表单
   formsubmit: function (e) {
+    console.log(e.detail.value)
+    fromdt = e.detail.value
     let name = e.detail.value.name;
     let phone = e.detail.value.phone;
     let plate = e.detail.value.plate;
@@ -45,18 +56,20 @@ Page({
   },
   onLoad: function (options) {
     let user = wx.getStorageSync("userinfo");
-    // console.log(user)
-    if (user.userphone) {
+    console.log(user)
+    if (user.phone) {
       this.setData({ phone: true })
     } else {
       ///console.log('没有手机号')
       this.setData({ phone: false})
     }
   },
+  // 存储手机号
+  gitphone:function(e){
+    this.setData({ yzphone: e.detail.value})
+  },
   changeinfo: function () {
-    this.setData({
-      status: 1
-    })
+    this.setData({status: 1})
   },
   onReady: function () {
 
@@ -71,34 +84,28 @@ Page({
   // 绑定手机号
   getphone: function (e) {
     var that = this;
-    let user = wx.getStorageSync("userinfo");
+    let fromdt = e.detail.value;
     var phone = e.detail.value.phone;
+    console.log(e.detail.value)
     if (!(/^1(3|4|5|7|8)\d{9}$/.test(phone))) {
       wx.showToast({
         title: '电话号码有误',
         icon: 'loading',
         duration: 500
       })
-    } else {
-      this.setData({phone:true})
-      console.log(user.id, phone)
-      // bases.postrq('/Wx/saveuserp', { id: user.id, phone: phone }).then(function (res) {
-      //   if (res.data) {
-      //     wx.setStorageSync("userinfo", res.data);
-      //     that.setData({ phone: true, userinfo: res.data })
-      //     wx.showToast({
-      //       title: '修改成功',
-      //       icon: 'loading',
-      //       duration: 500
-      //     })
-      //   } else {
-      //     wx.showToast({
-      //       title: '系统出错',
-      //       icon: 'loading',
-      //       duration: 500
-      //     })
-      //   }
-      // })
+    }else {
+      var data = {openid:wx.getStorageSync('openid'), username: fromdt.name, sms_code: fromdt.yzm, phone: phone }
+      console.log(data)
+        bases.postrequst('api/bind',data).then(function (res) {
+          console.log(res)
+          if (res.code == 200) {
+            wx.setStorageSync("userinfo", res.data);
+            that.setData({ phone: true, userinfo: res.data })
+            wx.showToast({title: '修改成功',icon: 'loading',duration: 500})
+          } else {
+            wx.showToast({title: '系统出错',icon: 'loading',duration: 500})
+          }
+        })
     }
   },
   /**

@@ -79,12 +79,12 @@ Page({
     bases.postrequst('api/order/add',data).then(function (res) {
         console.log(res)
         if (type == 'wechat') {
-          that.wxpay(res.data)
+          that.wxpay('支付情况',res.data)
         } else {
           // 积分购买
-          console.log('积分购买')
+          console.log('积分购买', res.code)
           if (res.code == 1022){
-            wx.showToast({title: '积分不足',})
+            wx.showToast({ title: '积分不足', icon: 'loading', duration: 500 })
           }
         }
       })
@@ -102,9 +102,12 @@ Page({
       console.log(res)
       if (type == 'wechat') {
         that.wxpay(res.data)
-      } else {
+      }else {
         // 积分购买
         console.log('积分购买')
+        if (res.code == 1022) {
+          wx.showToast({ title: '积分不足', icon: 'loading', duration: 500 })
+        }
       }
     })
   },
@@ -117,12 +120,14 @@ Page({
       signType: 'MD5',
       paySign: data.paySign,
       success(res) { 
-        console.log(res)
+        //console.log(res)
+        wx.showToast({ title: '支付成功', icon: 'success', duration: 500 })
         // 支付成功
       },
       fail(res) {
-        console.log(res)
+        //console.log(res)
         // 支付失败
+        wx.showToast({ title: '支付失败', icon: 'loading', duration: 500 })
       }
     })
   },

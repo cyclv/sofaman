@@ -1,7 +1,7 @@
 <!--pages/user/usinfo/usinfo.wxml-->
 <view class="contain" wx:if='{{phone}}'>
   <view class='titles'>
-       <image class='img' src='{{userinfo.userurl}}'></image>
+       <image class='img' src='{{userinfo.avatar}}'></image>
   </view>
   <view class='margin'>
     <view class='aboutme'>
@@ -11,11 +11,11 @@
         </view>
         <view class='phone'>
              <view class='phoneleft'>电话号码</view>
-            <view class='phoneright'>{{userinfo.userphone}}</view>
+            <view class='phoneright'>{{userinfo.phone}}</view>
         </view>
     </view>
   </view>
-  <view class='upbtn' bindtap='changeinfo'>修改信息</view>
+  <!-- <view class='upbtn' bindtap='changeinfo'>修改信息</view> -->
   <view class='cover' wx:if="{{status==1}}"></view>
   <form bindsubmit='formsubmit' wx:if="{{status==1}}">
         <view class='contains'>
@@ -27,7 +27,7 @@
             </view>
             <view class="section section_gap">
               <view class="section__title">电话：</view>
-              <input name="phone" value='{{userinfo.userphone}}' ></input>
+              <input name="phone" value='{{userinfo.phone}}' ></input>
             </view>
         </view>
         <button form-type='submit' class='changebtn'>提交</button>
@@ -36,14 +36,14 @@
 </view>
 <form class='flexct wx_phone' bindsubmit="getphone" wx:else>
   <view class='wx_input'>
-    <input name='dpname' maxlength='11' placeholder='请输入姓名' adjust-position></input>
+    <input name='name' placeholder='请输入姓名' adjust-position></input>
   </view>
   <view class='wx_input'>
-    <input name='phone' maxlength='11' placeholder='请输入手机号' adjust-position></input>
+    <input name='phone' maxlength='11' placeholder='请输入手机号' adjust-position bindconfirm='gitphone'></input>
   </view>
   <view class='flexlb'>
     <view class='wx_input yzm'>
-      <input name='phone' maxlength='11' placeholder='请输入验证码' adjust-position></input>
+      <input name='yzm' maxlength='11' placeholder='请输入验证码' adjust-position></input>
     </view>
     <view class='yzm-right flexct' bindtap='yzm'>获取验证码</view>
   </view>
