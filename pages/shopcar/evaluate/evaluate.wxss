@@ -1,0 +1,19 @@
+/* pages/shopcar/evaluate/evaluate.wxss */
+.classify .list{
+  width: 330rpx;
+}
+.classify .list image{
+  height: 50rpx;
+  width: 50rpx;
+  margin-right: 10rpx;
+}
+textarea{
+  margin-top: 40rpx;
+  height: 300rpx;
+  width: 690rpx;
+  border: 1px solid #f2f2f2;
+}
+.btn{
+  margin-top: 40rpx;
+  width: 690rpx;
+}

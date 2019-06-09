@@ -1,0 +1,23 @@
+<!--pages/shopcar/evaluate/evaluate.wxml-->
+<view class='container'>
+  <view class='classify wt100 flexct'>
+    <view class='content flexlb wt90'>
+      <view class='list flexrow' bindtap='ctbind' data-idx='0'>
+        <image wx:if="{{select == 0}}" src='../../../imgs/index/evaluate_s2.png'></image>
+        <image wx:else src='../../../imgs/index/evaluate_x2.png'></image>好评
+      </view>
+      <view class='list flexrow' bindtap='ctbind' data-idx='1'>
+        <image wx:if="{{select == 1}}" src='../../../imgs/index/evaluate_s1.png'></image>
+        <image wx:else src='../../../imgs/index/evaluate_x1.png'></image>好评
+      </view>
+      <view class='list flexrow' bindtap='ctbind' data-idx='2'>
+        <image wx:if="{{select == 2}}" src='../../../imgs/index/evaluate_s1.png'></image>
+        <image wx:else src='../../../imgs/index/evaluate_x1.png'></image>好评
+      </view>
+    </view>
+  </view>
+  <view>
+    <textarea></textarea>
+  </view>
+  <button class='btn'>提交</button>
+</view>

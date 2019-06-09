@@ -24,7 +24,7 @@ Page({
     this.setData({ userinfo:userinfo})
     var that = this;
     bases.postrequst('api/bill/list',{openid:wx.getStorageSync('openid')}).then(function(res){
-      //console.log(res.data)
+      console.log(res.data)
       if(res.code = 200){
         that.setData({ userct: res.data, content: res.data.record.list})
       }

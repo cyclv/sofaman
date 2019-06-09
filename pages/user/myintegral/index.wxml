@@ -14,15 +14,14 @@
       <view class='left flexsx'>
         <view>{{item.title}}</view> 
         <view> 
-          <text class='text' wx:if="{{ctselect == 1}}">积分 + </text>
+          <text class='text' wx:if="{{item.type == 1}}">积分 + </text>
           <text class='text' wx:else>积分 - </text>
           {{item.money}}
         </view>
       </view>
       <view class='right flexsx'> 
         <view>{{item.date}}</view>
-        <view wx:if="{{ctselect == 1}}">{{item.type}}</view>
-        <view wx:else></view>
+        <view>{{item.type_name}}</view>
       </view>
     </view>
   </view>
