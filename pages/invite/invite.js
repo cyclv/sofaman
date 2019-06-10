@@ -66,10 +66,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    var user = wx.get
+    var user = wx.getStorageSync('userinfo')
     return {
       title: '让您的店铺赚钱的神器',
-      path: '/pages/index/index?parentid=' + JSON.stringify(this.data.item),
+      path: '/pages/index/index?parentid=' + user.id,
       success: function (res) {
         console.log(res)
       }

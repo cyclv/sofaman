@@ -32,7 +32,10 @@ Page({
       console.log('没有跳转')
     }
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    if (options.parentid){
+      wx.setStorageSync('parentid', options.parentid)
+    }
     const that = this
     // 轮播请求
     base.getrequst('api/home/banner').then(function (res){

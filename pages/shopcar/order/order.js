@@ -53,6 +53,13 @@ Page({
       } 
     })
   },
+  //确认收货
+  already:function(e){
+    var data = e.currentTarget.dataset
+    wx.navigateTo({
+      url: '/pages/shopcar/evaluate/evaluate?odid=' + data.odid,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
