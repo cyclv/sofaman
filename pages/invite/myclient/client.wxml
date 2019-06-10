@@ -2,10 +2,10 @@
 <view class='container'>
   <view class="myui-info flexlb wt90" wx:for="{{info}}" wx:key bindtap='clientdt' data-info='{{item}}'>
     <view class='left flex' >
-      <image src='{{item.img}}'></image>
-      <text class='text'>{{item.name}}</text>
+      <image src='{{item.avatar}}'></image>
+      <text class='text'>{{item.nickname}}</text>
     </view>
-    <view class='right'>{{item.time}} <text class='next'> ＞</text></view>
+    <view class='right'>{{item.created_at}} <text class='next'> ＞</text></view>
   </view>
 </view>
 

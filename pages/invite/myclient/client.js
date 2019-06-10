@@ -13,10 +13,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     bases.getrequst('api/customer',{openid:wx.getStorageSync('openid')}).then(function(res){
       console.log(res)
       if(res.code == 1003){
         console.log('暂无数据')
+        that.setData({ info: '' })
+      }else if (res.code == 200){
+        that.setData({ info:res.data.list})
       }
     })
   },

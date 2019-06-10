@@ -67,6 +67,7 @@ Page({
    */
   onShareAppMessage: function () {
     var user = wx.getStorageSync('userinfo')
+    console.log(user)
     return {
       title: '让您的店铺赚钱的神器',
       path: '/pages/index/index?parentid=' + user.id,

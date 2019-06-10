@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userinfo:'',
     usericon: [
       { id: 0, img: '../../imgs/user/order1.png', text: '待付款', src: '../calculator/calculator' },
       { id: 1, img: '../../imgs/user/order2.png', text: '待收货', src: '../joke/joke' },
@@ -64,7 +65,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var user = wx.getStorageSync('userinfo')
+    this.setData({ userinfo: user})
   },
 
   /**

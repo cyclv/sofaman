@@ -2,9 +2,9 @@
 <view class='container'>
   <view class="myui-info flexlb wt90" wx:for="{{info}}" wx:key>
     <view class='left flex' >
-      <image src='{{item.img}}'></image>
-      <text class='text'>{{item.name}}</text>
+      <image src='{{item.avatar}}'></image>
+      <text class='text'>{{item.nickname}}</text>
     </view>
-    <view class='right'><text class='color1'>{{item.type}} </text> {{item.time}}</view>
+    <view class='right'><text class='color1'>{{item.recharge_text}} </text> {{item.created_at}}</view>
   </view>
 </view>
