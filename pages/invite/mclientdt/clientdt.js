@@ -1,4 +1,5 @@
 // pages/invite/mclientdt/clientdt.js
+const bases = require('../../../utils/base.js')
 Page({
 
   /**
@@ -12,12 +13,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(JSON.parse(options.info))
-    var data = [{id:1,title:'充值1000',size:'1400',type:'加油',time:'2018-12-26 12:33'}]
-    // data.push(JSON.parse(options.info))
-    //const data = []
-    this.setData({
-      content: data
+    var that = this;
+    bases.getrequst('api/bill/recharge/list',{ openid:options.info,page:1,size:10}).then(function(res){
+      console.log(res)
+      that.setData({content: res.data.list})
     })
   },
 

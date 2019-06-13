@@ -10,17 +10,17 @@
   <view class='container'>
     <!-- 商品标题-->
     <view class='good-info'>
-      <view class='if1'>￥<text class='if1-price'>{{goodsinfo.goods.price}}</text></view>
+      <view class='if1'>￥积分<text class='if1-price'>{{goodsinfo.goods.integral}}</text></view>
       <view class='if2'>{{goodsinfo.goods.goods_name}}</view>
     </view>
     <!-- 商品评价-->
-    <view class='evaluate flexct'>
+    <view class='evaluate flexct' wx:if='{{pingjia}}'>
       <view class='all flexlb wt710'>
         <view>用户评价</view>
         <view class='right'>查看全部 ＞</view>
       </view>
-      <view class='el1 wt710'> <image src='../../imgs/index/tab_n1.png'></image>乘用车</view>
-      <view class='el2 wt710'>凳子很满意，木料很好，没有异味，放入店中之后销量好很好</view>
+      <view class='el1 wt710'> <image class='mgr20' src='{{pingjia.avatar}}'></image>{{pingjia.nickname}}</view>
+      <view class='el2 wt710'>{{pingjia.content}}</view>
     </view>
     <!-- <view class='wt100' style='height:500rpx;'>
     
@@ -31,6 +31,7 @@
       <image class='wt100' src='{{item}}' mode='widthFix' lazy-load='true'></image>
     </view>
   </view>
+  <view class='wt100' style='height: 120rpx;'></view>
 </view>
 <!-- 底部table -->
 <view class='mytable flexct'>
@@ -54,7 +55,7 @@
       <image class='wt100' mode='widthFix' src="{{goodsinfo.goods.image}}"></image>
     </view>
     <view class="price">
-      <view class="pc1">¥180</view>
+      <view class="pc1">¥{{goodsinfo.goods.integral}}</view>
       <view>大号</view>
       <view>红色</view>
     </view>

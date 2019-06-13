@@ -12,7 +12,8 @@ Page({
     color: 1, //颜色的id
     color_image:'',
     slider:true,
-    goods_num:1
+    goods_num:1,
+    pingjia:''  //评价
   },
 
   /**
@@ -23,6 +24,21 @@ Page({
     bases.getrequst('api/goods/detail', {goods_id:options.goods}).then(function(res){
       console.log('商品信息',res.data)
       that.setData({ goodsinfo: res.data})
+      that.evaluate(res.data.goods.id);
+    })
+  },
+  // 请求评价
+  evaluate:function(id){
+    const that = this
+    console.log(id)
+    bases.getrequst('api/goods/eavluate', { id: id,page:1,size:1}).then(function (res) {
+      console.log('评价信息', res.data)
+      if(res.code == 200){
+        that.setData({ pingjia: res.data.data[0]})
+      } else if (res.code == 1003){
+        that.setData({ pingjia: false})
+      }
+      // that.setData({ goodsinfo: res.data })
     })
   },
   imageload:function(e){

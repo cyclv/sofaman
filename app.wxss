@@ -35,6 +35,9 @@
 .mgl40{
   margin-left: 40rpx;
 }
+.mgr20{
+  margin-right: 20rpx;
+}
 .nothing{
   height: 460rpx;
   line-height: 460rpx;

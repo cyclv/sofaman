@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view wx:if="{{pingpai}}" class="container">
   <!-- 分类 -->
   <view style='height:80rpx;width:750rpx;'></view>
   <scroll-view class='classify' scroll-x>
@@ -46,4 +46,7 @@
       该分类下暂无商品，请耐心等待
     </view>
   </view>
+</view>
+<view class="container" wx:else style='height:1000rpx;'>
+  欢迎来到墩子哥
 </view>

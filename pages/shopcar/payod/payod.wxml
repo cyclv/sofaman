@@ -18,7 +18,7 @@
       </view>
       <view class="goods-detail">
           <view class='goods_info'>{{item.goods_name}}</view>
-          <text>数量：{{item.goods_num}}</text><text class='price1 mgl40'>积分：{{item.amount}}</text>
+          <text>数量：{{item.goods_num}}</text><text class='price1 mgl40'>单价：{{item.amount}}</text>
           <view class='bottom_info flexlb'>
             <view class='price1'>{{item.color_name}} {{item.sku_name}}</view>
           </view>
@@ -32,6 +32,12 @@
         <text class='text'>总金额</text>
       </view>
       <view class='right'>￥{{shopcar.total}}</view>
+    </view>
+    <view class="myui-info flexlb wt90">
+      <view class='left flex' >
+        <text class='text'>总积分</text>
+      </view>
+      <view class='right'>￥{{shopcar.integral}}</view>
     </view>
     <view class="myui-info flexlb wt90">
       <view class='left flex' >
@@ -68,7 +74,7 @@
       </view>
       <view class="goods-detail">
           <view class='goods_info'>{{gdsinfo.goods.goods_name}}</view>
-          <text>数量:{{gdsinfo.goods.goods_num}}</text><text class='price1 mgl40'>积分：{{gdsinfo.sku.sku_price}}</text>
+          <text>数量:{{gdsinfo.goods.goods_num}}</text><text class='price1 mgl40'>积分：{{gdsinfo.goods.integral}}￥单价：{{gdsinfo.sku.sku_price}}</text>
           <view class='bottom_info flexlb'>
             <view class='price1'>{{gdsinfo.color.color_name}} {{gdsinfo.sku.sku_name}}</view>
           </view>
@@ -82,6 +88,12 @@
         <text class='text'>总金额</text>
       </view>
       <view class='right'>￥{{total}}</view>
+    </view>
+    <view class="myui-info flexlb wt90">
+      <view class='left flex' >
+        <text class='text'>总积分</text>
+      </view>
+      <view class='right'>￥{{integral}}</view>
     </view>
     <view class="myui-info flexlb wt90">
       <view class='left flex' >

@@ -11,4 +11,7 @@
     </view>
   </view>
   <button class='btn' bindtap='pay'>微信支付</button>
+  <view class='wt100 mgtop20'>
+  
+  </view>
 </view>

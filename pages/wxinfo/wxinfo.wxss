@@ -1,8 +1,5 @@
 /* pages/wxinfo/wxinfo.wxss */
 .wx_img{
-  width: 700rpx;
-}
-.wx_img image{
   width: 460rpx;
   height: 460rpx;
 }

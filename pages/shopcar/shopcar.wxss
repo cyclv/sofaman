@@ -53,7 +53,7 @@
 }
 .carts-title {
   width: 360rpx;
-  height: 85rpx;
+  height: 100rpx;
   font-size: 22rpx;
   padding-right: 40rpx;
   overflow: hidden;
@@ -73,7 +73,7 @@
 .stepper-box{
   display: flex;
   justify-content: space-between;
-  margin-top: 20rpx;
+  /* margin-top: 20rpx; */
 }
 .stepper-box>view:first-child{
   color: #A0A0A0;

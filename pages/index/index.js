@@ -11,11 +11,15 @@ Page({
     ],
     goodcl: [], //商品分类
     apply: [
-      { id: 1, img: '../../imgs/user/index.png', text: '充值钜惠', src: '../index/benefit/benefit' },
+      { id: 1, img: '../../imgs/user/index.png', text: '邀请有奖', src: '/pages/invite/invite' },
       { id: 1, img: '../../imgs/user/user6.png', text: '客服中心', src: '../index/service/service' },
     ],
     goodsinfo: [], //商品列表
-    classifyi:0
+    classifyi:0,
+    classifyiid:'',
+    pageinfo:false,
+    pagesize:1,
+    pingpai:false
   },
   //轮播点击事件
   sliderbtn: function(e) {
@@ -45,15 +49,20 @@ Page({
     // 分类请求
     base.getrequst('api/goods/class').then(function (res) {
       //console.log('分类',res.data)
-      that.setData({goodcl:res.data.list})
+      that.setData({goodcl: res.data.list, classifyiid: res.data.list[0].id,pingpai:true})
       //查询商品信息
       that.goosinfo(res.data.list[0].id, 1)
+    })
+    // 页面信息
+    base.getrequst('/api/open').then(function (res) {
+      wx.setStorageSync('pageinfo', res.data.open)
+      that.setData({pageinfo: res.data.open})
     })
   },
   // 商品信息查询api/goods/list
   goosinfo:function(id,page){
     const that = this
-    base.getrequst('api/goods/list', {class_id:id,page:page,size:10}).then(function (res) {
+    base.getrequst('api/goods/list', {class_id:id,page:page,size:4}).then(function (res) {
       //console.log('商品信息', res.data)
       that.setData({ goodsinfo: res.data.list })
     })
@@ -61,7 +70,7 @@ Page({
   // 分类点击事件
   cbt:function(e){
     var idx = e.currentTarget.dataset;
-    this.setData({classifyi:idx.idx})
+    this.setData({ classifyi: idx.idx, classifyiid:idx.id})
     this.goosinfo(idx.id, 1)  //查询商品请求
   },
   // icon进入详情
@@ -88,5 +97,19 @@ Page({
   // 页面下拉到底
   onReachBottom:function (){
     console.log(111)
+    var goods = this.data.goodsinfo
+    var id = this.data.classifyiid
+    var pagesize = this.data.pagesize + 1
+    console.log(id,pagesize)
+    const that = this
+    base.getrequst('api/goods/list', { class_id: id, page: pagesize, size: 10 }).then(function (res) {
+      //console.log('商品信息', res)
+      if (res.data.list >0){
+        goods.push(res.data.list)
+        that.setData({ goodsinfo: goods, pagesize: pagesize++ })
+      }else{
+        console.log('到底了')
+      }
+    })
   }
 })

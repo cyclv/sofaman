@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    pageinfo: wx.getStorageSync('pageinfo'),
     userinfo:'',
     usericon: [
       { id: 0, img: '../../imgs/user/order1.png', text: '待付款', src: '../calculator/calculator' },
@@ -19,7 +20,7 @@ Page({
    */
   onLoad: function (options) {
     const usinfo = wx.getStorageSync('userinfo')
-    //console.log(usinfo)
+    // console.log(wx.getStorageSync('pageinfo'))
     if (!usinfo.phone){ 
       wx.showModal({
         title: '温馨提示',

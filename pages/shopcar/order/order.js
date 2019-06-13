@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ordercl: [{ id: 'all', name: '所有订单' },{id: 0, name: '待支付' }, { id: 1, name: '待收货' },{ id: 3,name:'待评价'}],
+    ordercl: [{ id: 'all', name: '所有订单' }, { id: 0, name: '待支付' }, { id: 1, name: '待发货' }, { id: 2, name: '待收货' },{ id: 3,name:'待评价'}],
     selectcl:0,
     carts:'',
     orderinfo:true
@@ -55,14 +55,19 @@ Page({
   },
   //确认收货
   already:function(e){
+
+    var data = e.currentTarget.dataset
+    bases.postrequst('api/order/receipt', { order_id: data.odid }).then(function (res) {
+      console.log(res)
+    })
+  },
+  // 追评
+  evaluate:function(e){
     var data = e.currentTarget.dataset
     wx.navigateTo({
       url: '/pages/shopcar/evaluate/evaluate?odid=' + data.odid,
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
 
   },

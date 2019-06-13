@@ -23,8 +23,10 @@
       </view>
       <view class='od-bom'>
         <view class='btn' wx:if="{{items.order_status == 0}}" bindtap='payagin' data-odid='{{items.id}}'>付款</view>
-        <view class='btn btn2' wx:if="{{items.order_status == 1}}" bindtap='already' data-odid='{{items.id}}'>确认收货</view>
+        <view class='btn btn2' wx:if="{{items.order_status == 2}}" bindtap='already' data-odid='{{items.id}}'>确认收货</view>
+        <view class='btn btn2' wx:if="{{items.order_status == 3}}" bindtap='evaluate' data-odid='{{items.id}}'>去追评</view>
         <view class='btn btn2' wx:if="{{items.order_status == 0}}" bindtap='colsepay' data-odid='{{items.id}}'>取消订单</view>
+        <view class='btn btn2' wx:if="{{items.order_status == 4}}">已完成</view>
         <view class='btn btn2' wx:if="{{items.order_status == -1}}">已取消</view>
       </view>
       <view class='wt100'></view>

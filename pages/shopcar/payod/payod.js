@@ -12,15 +12,16 @@ Page({
     paynow:true,
     gdsinfo:'',
     total:'',
+    integral:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options )
     if (options.gdsinfo){
       var gdsinfo = JSON.parse(options.gdsinfo)
+      console.log(gdsinfo)
       this.setData({ paynow: false, gdsinfo: gdsinfo})
       this.sum()
     }else{
@@ -31,6 +32,7 @@ Page({
   selectgoods:function(){
     const that = this
     bases.getrequst('api/shopcar/js', { openid: wx.getStorageSync('openid'), js_type: 'shopcar' }).then(function (res) {
+      console.log(res)
       if (res.code == 200) { that.setData({ paynow: true,shopcar: res.data }) }
     })
   },
@@ -44,9 +46,9 @@ Page({
   sum:function(){
     const gdsinfo = this.data.gdsinfo
     const price = gdsinfo.sku.sku_price
-    const num = gdsinfo.sku.sku_price
+    const num = gdsinfo.goods.goods_num
     const usinfo = wx.getStorageSync('userinfo')
-    this.setData({ total: price * num, usinfo: usinfo})
+    this.setData({ total: price * num, usinfo: usinfo, integral: price * num * 2.5})
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

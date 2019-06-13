@@ -1,16 +1,16 @@
 <!--pages/invite/mclientdt/clientdt.wxml-->
-<view wx:if='{{content}}' class='info wt100 flexct'>
+<view wx:if='{{content.length > 0}}' class='info wt100 flexct'>
   <view class='if-content flexlb wt90' wx:for="{{content}}" wx:key>
     <view class='left flexsx'>
       <view>{{item.title}}</view> 
       <view> 
         <text class='text' >积分 + </text>
-        {{item.size}}
+        {{item.money}}
       </view>
     </view>
     <view class='right flexsx'> 
-      <view>{{item.time}}</view>
-      <view>{{item.type}}</view>
+      <view>{{item.date}}</view>
+      <view>{{item.type_name}}</view>
     </view>
   </view>
 </view>

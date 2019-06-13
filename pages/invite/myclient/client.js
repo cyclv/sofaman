@@ -27,7 +27,7 @@ Page({
   clientdt:function(e){
     var info = e.currentTarget.dataset.info;
     wx.navigateTo({
-      url: '/pages/invite/mclientdt/clientdt?info=' + JSON.stringify(info),
+      url: '/pages/invite/mclientdt/clientdt?info=' + info.openid,
     })
   },
   /**
