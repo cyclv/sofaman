@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    usinfo:'',
+    usinfo: wx.getStorageSync('userinfo'),
     shopcar:'',
     address:'',
     paynow:true,
@@ -32,7 +32,7 @@ Page({
   selectgoods:function(){
     const that = this
     bases.getrequst('api/shopcar/js', { openid: wx.getStorageSync('openid'), js_type: 'shopcar' }).then(function (res) {
-      console.log(res)
+      console.log('我的购物车商品',res)
       if (res.code == 200) { that.setData({ paynow: true,shopcar: res.data }) }
     })
   },

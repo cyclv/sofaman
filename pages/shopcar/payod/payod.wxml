@@ -29,15 +29,15 @@
   <view class='orderinfo flexct'>
     <view class="myui-info flexlb wt90">
       <view class='left flex' >
-        <text class='text'>总金额</text>
+        <text class='text'>金额</text>
       </view>
       <view class='right'>￥{{shopcar.total}}</view>
     </view>
     <view class="myui-info flexlb wt90">
       <view class='left flex' >
-        <text class='text'>总积分</text>
+        <text class='text'>积分</text>
       </view>
-      <view class='right'>￥{{shopcar.integral}}</view>
+      <view class='right'>￥{{shopcar.score}}</view>
     </view>
     <view class="myui-info flexlb wt90">
       <view class='left flex' >
@@ -85,13 +85,13 @@
   <view class='orderinfo flexct'>
     <view class="myui-info flexlb wt90">
       <view class='left flex' >
-        <text class='text'>总金额</text>
+        <text class='text'>金额</text>
       </view>
       <view class='right'>￥{{total}}</view>
     </view>
     <view class="myui-info flexlb wt90">
       <view class='left flex' >
-        <text class='text'>总积分</text>
+        <text class='text'>积分</text>
       </view>
       <view class='right'>￥{{integral}}</view>
     </view>
