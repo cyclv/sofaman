@@ -35,8 +35,7 @@
 </view>
 <!-- 底部table -->
 <view class='mytable flexct'>
-  <!-- <navigator src="/pages/user/mycollect/index"></navigator> -->
-  <view class='tb1 flexct'><image class='img' src='../../imgs/index/service.png'></image>客服</view>
+  <navigator url="/pages/index/service/service"><view class='tb1 flexct'><image class='img' src='../../imgs/index/service.png'></image>客服</view></navigator>
   <view class='tb1 flexct'><image class='img' src='../../imgs/index/collect.png' bindtap='collect'></image>收藏</view>
   <navigator url="/pages/shopcar/shopcar" open-type='switchTab'>
     <view class='tb1 flexct'><image class='img' src='../../imgs/index/tab_n2.png'></image>购物车</view>
