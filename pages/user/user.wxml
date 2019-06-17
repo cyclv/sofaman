@@ -39,7 +39,7 @@
       <view class="weui-cell__bd">充值钜惠</view>
       <view class="weui-cell__ft_in-access"></view>
     </navigator> -->
-    <navigator wx:if="{{pageinfo}}" url="../user/myintegral/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator wx:if="{{pageinfo == 'true'}}" url="../user/myintegral/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
         <image src="../../imgs/user/user2.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
       </view>

@@ -1,11 +1,12 @@
 // pages/user/user.js
+const bases = require('../../utils/base.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pageinfo: wx.getStorageSync('pageinfo'),
+    pageinfo: false,
     userinfo:'',
     usericon: [
       { id: 0, img: '../../imgs/user/order1.png', text: '待付款', src: '../calculator/calculator' },
@@ -20,7 +21,14 @@ Page({
    */
   onLoad: function (options) {
     const usinfo = wx.getStorageSync('userinfo')
-    // console.log(wx.getStorageSync('pageinfo'))
+    var that = this
+    // 更新用户信息
+    bases.updatauser().then(function(res){})
+    // 页面信息
+    bases.getrequst('/api/open').then(function (res) {
+      console.log(res.data.open)
+      that.setData({pageinfo:res.data.open})
+    })
     if (!usinfo.phone){ 
       wx.showModal({
         title: '温馨提示',

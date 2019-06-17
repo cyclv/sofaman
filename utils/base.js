@@ -53,9 +53,25 @@ function activelist(url, data) {
     })
   })
 }
+// get 用户信息更新
+function updatauser() {
+  return new Promise(function (resolve, reject) {
+    wx.request({
+      url: 'https://api.lyworker.com/api/user',
+      data: { openid:wx.getStorageSync('openid') },
+      header: { 'content-type': 'application/json' },
+      method: "GET",
+      success: function (res) {
+        resolve(res)
+        if (res.code == 200) { wx.setStorageSync('userinfo', res.data) }
+      }
+    })
+  })
+}
 module.exports = {
   postrequst: postrequst,
   getrequst: getrequst,
   goodscollect:goodscollect,
-  activelist: activelist
+  activelist: activelist,
+  updatauser: updatauser
 }
