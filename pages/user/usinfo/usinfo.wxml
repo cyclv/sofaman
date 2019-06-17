@@ -38,15 +38,22 @@
   <view class='wx_input'>
     <input name='name' placeholder='请输入姓名' adjust-position></input>
   </view>
-  <view class='wx_input'>
-    <input name='phone' maxlength='11' placeholder='请输入手机号' adjust-position bindconfirm='gitphone'></input>
-  </view>
-  <view class='flexlb'>
-    <view class='wx_input yzm'>
-      <input name='yzm' maxlength='11' placeholder='请输入验证码' adjust-position></input>
+  <form bindsubmit="getyzm">
+    <view class='flexlb'>
+      <view class='wx_input yzm'>
+        <input name='phone' maxlength='11' placeholder='请输入手机号'></input>
+      </view>
+      <view wx:if='{{yznum == 60}}' class='yzm-right'>
+        <button class='yzm-right flexct' form-type="submit">获取验证码</button>
+      </view>
+      <view wx:else class='yzm-right flexct' bindtap='yzm'>{{yznum}}s</view>
     </view>
-    <view class='yzm-right flexct' bindtap='yzm'>获取验证码</view>
-  </view>
+  </form>
+  <view class='flexlb'>
+      <view class='wx_input yzm'>
+        <input name='yzm' maxlength='11' placeholder='请输入验证码'></input>
+      </view>
+    </view>
   <view class='wt100'>为了更好的用户体验，完善用户信息</view>
   <button  class='btn mat20' id='tab-con' form-type="submit">完善资料</button>
 </form>

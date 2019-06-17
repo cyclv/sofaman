@@ -6,17 +6,21 @@ Page({
     userinfo: wx.getStorageSync("userinfo"),
     status: 0,
     phone: true,
-    yzphone:''
+    yznum:60,
   },
   // yzm
-  yzm:function(){
-    var phone = this.data.yzphone
-    console.log(phone)
+  getyzm:function(e){
+    console.log(e.detail.value)
+    var phone = e.detail.value.phone
+    var that = this;
     if (!(/^1(3|4|5|7|8)\d{9}$/.test(phone))) {
       wx.showToast({title: '电话号码有误',icon: 'loading',duration: 500})
     }else{
       bases.postrequst('api/sms',{openid:wx.getStorageSync('openid'),phone:phone}).then(function (res){
         console.log(res)
+        if(res.code = 200){
+          var intv = setInterval(function () { var num = that.data.yznum - 1; that.setData({ yznum: num }); if (that.data.yznum <= 1) { that.setData({ yznum: 60 }); clearInterval(intv); } }, 1000);
+        }
       })
     }
   },
@@ -52,6 +56,7 @@ Page({
       //     wx.showToast({ title: '系统出错', icon: 'error', duration: 500 })
       //   }
       // })
+
     }
   },
   onLoad: function (options) {
@@ -63,10 +68,6 @@ Page({
       ///console.log('没有手机号')
       this.setData({ phone: false})
     }
-  },
-  // 存储手机号
-  gitphone:function(e){
-    this.setData({ yzphone: e.detail.value})
   },
   changeinfo: function () {
     this.setData({status: 1})
@@ -85,16 +86,15 @@ Page({
   getphone: function (e) {
     var that = this;
     let fromdt = e.detail.value;
-    var phone = e.detail.value.phone;
-    console.log(e.detail.value)
-    if (!(/^1(3|4|5|7|8)\d{9}$/.test(phone))) {
+    console.log(fromdt)
+    if (!(/^1(3|4|5|7|8)\d{9}$/.test(fromdt.phone))) {
       wx.showToast({
         title: '电话号码有误',
         icon: 'loading',
         duration: 500
       })
     }else {
-      var data = {openid:wx.getStorageSync('openid'), username: fromdt.name, sms_code: fromdt.yzm, phone: phone }
+      var data = { openid: wx.getStorageSync('openid'), username: fromdt.name, sms_code: fromdt.yzm, phone: fromdt.phone }
       console.log(data)
         bases.postrequst('api/bind',data).then(function (res) {
           console.log(res)
