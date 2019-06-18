@@ -101,7 +101,7 @@ Page({
           if (res.code == 200) {
             wx.setStorageSync("userinfo", res.data);
             that.setData({ phone: true, userinfo: res.data })
-            wx.showToast({title: '修改成功',icon: 'loading',duration: 500})
+            wx.showToast({title: '添加成功',icon: 'loading',duration: 500})
           } else {
             wx.showToast({title: '系统出错',icon: 'loading',duration: 500})
           }

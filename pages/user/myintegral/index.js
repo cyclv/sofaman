@@ -24,7 +24,7 @@ Page({
     this.setData({ userinfo:userinfo})
     var that = this;
     bases.postrequst('api/bill/list',{openid:wx.getStorageSync('openid')}).then(function(res){
-      console.log(res.data)
+      console.log('消费记录',res.data)
       if(res.code = 200){
         that.setData({ userct: res.data, content: res.data.record.list})
       }
@@ -32,10 +32,11 @@ Page({
   },
   ctbind:function(e){
     var idx = e.currentTarget.dataset.idx
-    //console.log(this.data.userct.record.list)
+    
     if(idx == 1){
       this.setData({ ctselect: idx, content: this.data.userct.record.list})
     }else{
+      console.log(this.data.userct.bill.list,this.data.userct.record.list, idx)
       this.setData({ ctselect:idx, content: this.data.userct.bill.list})
     }
   },

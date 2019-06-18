@@ -53,11 +53,6 @@ Page({
       //查询商品信息
       that.goosinfo(res.data.list[0].id, 1)
     })
-    // 页面信息
-    base.getrequst('/api/open').then(function (res) {
-      wx.setStorageSync('pageinfo', res.data.open)
-      that.setData({pageinfo: res.data.open})
-    })
   },
   // 商品信息查询api/goods/list
   goosinfo:function(id,page){

@@ -18,12 +18,12 @@ Page({
     var that = this
     // 积分列表
     bases.getrequst('api/recharge/list').then(function(res){
-      console.log(res)
+      //console.log(res)
       that.setData({benefit:res.data})
     })
     // 活动信息
     bases.activelist().then(function (res) {
-      console.log(res.data[0])
+      //console.log(res.data[0])
       that.setData({ list: res.data[0] })
     })
   },
