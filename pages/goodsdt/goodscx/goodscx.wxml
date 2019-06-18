@@ -1,0 +1,36 @@
+<!--pages/goodsdt/goodscx/goodscx.wxml-->
+<view class='container'>
+  <form class='wt100' bindsubmit="formSubmit">
+    <view class='wt100 flexrow input'>
+      <image class='mgl40' src='../../../imgs/select.png'></image>
+      <input name='goodsnm' placeholder='请输入商品名称'></input>
+      <button class='btn' form-type="submit">查询</button>
+    </view>
+  </form>
+  <!-- 商品列表 -->
+  <view class='wt100 flexct'>
+    <view wx:if='{{goodsinfo.length >= 1}}' class='among-content clear flexlb'>
+      <block wx:key="shoplist" wx:for="{{goodsinfo}}" wx:for-index="index">
+        <view class="shop-box" data-id='{{item.id}}' bindtap='detailInto'>
+          <view class="shop-img">
+              <image class='image-full' src="{{item.image}}" lazy-load='true'></image>  
+          </view>
+          <view class="shop-detail">
+              <view class='shop_info'>{{item.goods_name}}</view>
+              <view class='bottom_info'>
+                <view class='price1'>积分：{{item.integral}}</view>
+                <!-- <view class='price2'>￥{{item.price}}</view> -->
+              </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!--  -->
+    <view wx:if='{{goodsinfo == 1}}' class='flexct' style='height:600rpx;font-size:28rpx;color:#d81e06;'>
+      
+    </view>
+    <view wx:if="{{goodsinfo.length <= 0 }}" class='flexct' style='height:600rpx;font-size:28rpx;color:#d81e06;'>
+      暂无您搜索的产品，请重新搜索
+    </view>
+  </view>
+</view>

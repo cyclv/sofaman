@@ -9,6 +9,12 @@
       </view>
     </view>  
   </scroll-view>
+    <!-- 查询 -->
+  <navigator url='/pages/goodsdt/goodscx/goodscx'>
+  <view class='wt100 ipselect flexct'>
+    <image class='ipimg' src='../../imgs/select.png'></image>
+  </view></navigator>
+  <!-- 轮播 -->
   <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000" circular="true">
     <block wx:for="{{imgUrls}}" wx:key>
       <swiper-item>
@@ -50,3 +56,5 @@
 <view class="container" wx:else style='height:1000rpx;'>
   欢迎来到墩子哥
 </view>
+<view wx:if='{{bottom == 1}}' class='bottom wt100 flexct'>正在加载中</view>
+<view wx:if='{{bottom == 2}}' class='bottom wt100 flexct'>到底了!</view>
