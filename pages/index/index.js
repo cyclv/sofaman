@@ -19,7 +19,8 @@ Page({
     classifyiid:'',
     pageinfo:false,
     pagesize:1,
-    pingpai:false
+    pingpai:false,
+    bottom:0
   },
   //轮播点击事件
   sliderbtn: function(e) {
@@ -91,19 +92,23 @@ Page({
   },
   // 页面下拉到底
   onReachBottom:function (){
-    console.log(111)
-    var goods = this.data.goodsinfo
     var id = this.data.classifyiid
     var pagesize = this.data.pagesize + 1
     console.log(id,pagesize)
     const that = this
-    base.getrequst('api/goods/list', { class_id: id, page: pagesize, size: 10 }).then(function (res) {
-      //console.log('商品信息', res)
-      if (res.data.list >0){
-        goods.push(res.data.list)
-        that.setData({ goodsinfo: goods, pagesize: pagesize++ })
+    base.getrequst('api/goods/list', { class_id: id, page: pagesize, size: 4}).then(function (res) {
+      var newdata = res.data.list
+      var goods = that.data.goodsinfo
+      console.log('分页商品信息', goods, newdata)
+      if (res.data.list.length > 0){
+        for (var i = 0; i < newdata.length;i++){
+          goods.push(newdata[i])
+        }
+        console.log('合并后的数据',goods)
+        that.setData({ bottom:1,goodsinfo: goods, pagesize: pagesize++ })
       }else{
         console.log('到底了')
+        that.setData({bottom:2})
       }
     })
   }

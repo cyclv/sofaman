@@ -1,75 +1,19 @@
-page{
-  background: #f5f5f5;
+/* pages/goodsdt/goodscx/goodscx.wxss */
+.input image{
+  width: 60rpx;
+  height: 60rpx;
 }
-.ipimg{
-  height: 50rpx;
-  width: 50rpx;
+.input input{
+  height: 60rpx;
+  font-size: 24rpx;
+  width: 470rpx;
+  border: 1px solid #999;
+  margin-left: 20rpx;
+  border-radius: 60rpx;
+  padding-left: 20rpx;
 }
-.ipselect{
-  height: 80rpx;
-  width: 80rpx;
-  font-size: 22rpx;
-  position: fixed;
-  top: 0rpx;
-  right: 0rpx;
-  z-index: 10000;
-  -moz-box-shadow:-6px 1px 4px #808080; -webkit-box-shadow:-6px 1px 4px #808080; box-shadow:-6px 1px 4px #808080;
-}
-/* 分类 */
-.classify{
-  height:80rpx;
-  width:750rpx;
-  position: fixed;
-  top: 0rpx;
-  background: white;
-  border-top: 1px solid #f5f5f5;
-  z-index: 1000;
-}
-.classify-item{
-  float:left;
-  padding: 0rpx 20rpx;
-  text-align:center;
-  height: 76rpx;
-  line-height: 76rpx;
-}
-.classifyxz{
-  display: flex;
-  height: 76rpx;
-  border-bottom: 4rpx solid salmon;
-}
-.title{
-  height:160rpx;
-  font-size: 40rpx;
-  font-weight:600;
-}
-/* 轮播 */
-swiper{
-  width:750rpx;
-  height: 400rpx;
-}
-swiper-item image{
-  width: 100%;
-}
-/* icon */
-.icon{
-  background: white;
-  width: 100%;
-}
-.icon .list{
-  width: 50%;
-  height: 160rpx;
-  align-content:center;
-  justify-content:center;
-  font-size: 22rpx;
-}
-.icon .list image{
-  width: 80rpx;
-  height: 80rpx;
-}
-.icon .list .text{
-  margin-top: 19rpx;
-  width: 200px;
-  text-align: center;
+.input .btn{
+  height: 60rpx;
 }
 
 /* 商品信息 */
@@ -149,9 +93,4 @@ swiper-item image{
   text-align: right;
   line-height: 60rpx;
   width: 35%;
-}
-.bottom{
-  display: flex;
-  bottom: 0rpx;
-  font-size: 20rpx;
 }

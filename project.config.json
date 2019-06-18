@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 16,
+			"current": 17,
 			"list": [
 				{
 					"id": 0,
@@ -166,6 +166,14 @@
 					"id": -1,
 					"name": "订单评价",
 					"pathName": "pages/shopcar/evaluate/evaluate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品搜索",
+					"pathName": "pages/goodsdt/goodscx/goodscx",
+					"query": "goods=1",
 					"scene": null
 				}
 			]

@@ -78,18 +78,25 @@ Page({
     const type = e.currentTarget.dataset.type
     const data = { openid: wx.getStorageSync('openid'), address_id: adid, payment: type}
     console.log(data)
-    bases.postrequst('api/order/add',data).then(function (res) {
+    if(adid){
+      bases.postrequst('api/order/add', data).then(function (res) {
         console.log(res)
         if (type == 'wechat') {
-          that.wxpay('支付情况',res.data)
+          that.wxpay('支付情况', res.data)
         } else {
           // 积分购买
           console.log('积分购买', res.code)
-          if (res.code == 1022){
+          if (res.code == 1022) {
             wx.showToast({ title: '积分不足', icon: 'loading', duration: 500 })
           }
         }
       })
+    }else{
+      wx.showToast({
+        title: '请选择收获地址', icon: 'loading'
+      })
+    }
+    
   },
   // 直接购买
   paytwo: function(e){
@@ -100,18 +107,24 @@ Page({
     var that = this
     const data = {openid: wx.getStorageSync('openid'), address_id: adid, payment: type,goods_id: gdif.sku.goods_id, sku_id: gdif.sku.id, color_id: gdif.color.id, goods_num: gdif.goods.goods_num}
     console.log(data)
-    bases.postrequst('api/order/buy',data).then(function (res) {
-      console.log(res)
-      if (type == 'wechat') {
-        that.wxpay(res.data)
-      }else {
-        // 积分购买
-        console.log('积分购买')
-        if (res.code == 1022) {
-          wx.showToast({ title: '积分不足', icon: 'loading', duration: 500 })
+    if (adid){
+      bases.postrequst('api/order/buy',data).then(function (res) {
+        console.log(res)
+        if (type == 'wechat') {
+          that.wxpay(res.data)
+        }else {
+          // 积分购买
+          console.log('积分购买')
+          if (res.code == 1022) {
+            wx.showToast({ title: '积分不足', icon: 'loading', duration: 500 })
+          }
         }
-      }
-    })
+      })
+    }else{
+      wx.showToast({
+        title: '请选择收获地址', icon: 'loading'
+      })
+    }
   },
   // 微信小程序支付方式
   wxpay:function(data){
