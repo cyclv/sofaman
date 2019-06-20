@@ -1,0 +1,11 @@
+<!--pages/goodsdt/pingjia/pingjia.wxml-->
+<view class='contioner'>
+    <view class='evaluate flexct' wx:for="{{pingjia}}" wx:key>
+      <!-- <view class='all flexlb wt710'>
+        <view>用户评价</view>
+        <view class='right' bindtap='pingjiadt'>查看全部 ＞</view>
+      </view> -->
+      <view class='el1 wt710'> <image class='mgr20' src='{{item.avatar}}'></image>{{item.nickname}}</view>
+      <view class='el2 wt710'>{{item.content}}</view>
+    </view>
+</view>

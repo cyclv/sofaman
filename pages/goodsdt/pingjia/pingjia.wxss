@@ -1,0 +1,26 @@
+/* pages/goodsdt/pingjia/pingjia.wxss */
+/* 商品评价 */
+.evaluate{
+  margin-top: 20rpx;
+  width: 100%;
+  background: white;
+  font-size: 32rpx;
+  color: black;
+}
+.all{
+  height: 80rpx;
+}
+.all .right{
+  color: #F23619;
+}
+.evaluate .el1{
+  display: flex;
+  align-items: center;
+}
+.evaluate .el1 image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.evaluate .el2{
+  padding-bottom: 40rpx;
+}

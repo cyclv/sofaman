@@ -17,7 +17,7 @@
     <view class='evaluate flexct' wx:if='{{pingjia}}'>
       <view class='all flexlb wt710'>
         <view>用户评价</view>
-        <view class='right'>查看全部 ＞</view>
+        <view class='right' bindtap='pingjiadt'>查看全部 ＞</view>
       </view>
       <view class='el1 wt710'> <image class='mgr20' src='{{pingjia.avatar}}'></image>{{pingjia.nickname}}</view>
       <view class='el2 wt710'>{{pingjia.content}}</view>

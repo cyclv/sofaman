@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/goodsdt/goodsdt",
+    "pages/goodsdt/pingjia/pingjia",
     "pages/goodsdt/goodscx/goodscx",
     "pages/index/benefit/benefit",
     "pages/index/service/service",

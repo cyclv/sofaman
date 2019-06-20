@@ -40,6 +40,9 @@ Page({
       // that.setData({ goodsinfo: res.data })
     })
   },
+  pingjiadt:function(){
+    wx.navigateTo({ url: '/pages/goodsdt/pingjia/pingjia?goodsid=' + this.data.goodsinfo.goods.id})
+  },
   imageload:function(e){
     //console.log('加载完成',e.currentTarget.dataset.idx)
   },
