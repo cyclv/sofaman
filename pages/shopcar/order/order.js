@@ -9,7 +9,8 @@ Page({
     ordercl: [{ id: 'all', name: '所有订单' }, { id: 0, name: '待支付' }, { id: 1, name: '待发货' }, { id: 2, name: '待收货' },{ id: 3,name:'待评价'}],
     selectcl:0,
     carts:'',
-    orderinfo:true
+    orderinfo:true,
+    wuliu:false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -18,9 +19,9 @@ Page({
     console.log(options.idx)
     this.selectod('all')
   },
+  // 订单分类点击时间
   ordercl:function(e){
     var dataset = e.currentTarget.dataset
-    console.log(dataset)
     this.setData({ selectcl:dataset.idx})
     this.selectod(dataset.id)
   },
@@ -28,7 +29,7 @@ Page({
   selectod:function(idx){
     const that = this
     bases.getrequst('api/order/list', { openid: wx.getStorageSync('openid'), status: idx, page: 1, size: 10 }).then(function (res) {
-      console.log(res)
+      //console.log(res)
       if (res.code == 200){
         that.setData({ orderinfo:true,carts: res.data.data })
       }else if (res.code == 1003){
@@ -55,21 +56,38 @@ Page({
   },
   //确认收货
   already:function(e){
-
     var data = e.currentTarget.dataset
     bases.postrequst('api/order/receipt', { order_id: data.odid }).then(function (res) {
       console.log(res)
     })
   },
+  // 物流
+  wuliu: function(info){
+    console.log(info.currentTarget.dataset.odid)
+    this.setData({ wuliu: info.currentTarget.dataset.odid}) 
+  },
+  closewl:function(){
+    this.setData({ wuliu: false})
+  },
   // 追评
   evaluate:function(e){
     var data = e.currentTarget.dataset
-    wx.navigateTo({
-      url: '/pages/shopcar/evaluate/evaluate?odid=' + data.odid,
+    wx.navigateTo({url: '/pages/shopcar/evaluate/evaluate?odid=' + data.odid,})
+  },
+  fuzhi:function(){
+    wx.setClipboardData({
+      data: this.data.wuliu.express_code,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            console.log(res.data)
+          }
+        })
+      }
     })
   },
   onReady: function () {
-
+    
   },
 
   /**

@@ -69,7 +69,7 @@ Page({
   //全选复选框是否选中
   bindSelectAll: function () {
     var selectedAllStatus = this.data.selectedAllStatus;
-    console.log(selectedAllStatus)
+    //console.log(selectedAllStatus)
     if (selectedAllStatus) {
       this.selectedgoods({ id:'', operation: 'no' })
     } else {
@@ -141,7 +141,7 @@ Page({
   selectshopcar:function(){
     const that =this
     bases.getrequst('api/shopcar/list', { openid: wx.getStorageSync('openid') }).then(function (res) {
-      console.log(res)
+      //console.log(res)
       if(res.code == 200){
         that.setData({ carts: res.data, hasList: true })
         that.checkbox(res.data)

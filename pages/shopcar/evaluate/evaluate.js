@@ -35,6 +35,9 @@ Page({
     var info = e.detail.value
     bases.postrequst('api/order/pingjia/add', { order_id: this.data.order_id, content: info.content}).then(function(res){
       console.log(res)
+      if(res.code == 200){
+        wx.showToast({ title: '评价成功', })
+      }
     })
   },
   /**

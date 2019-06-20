@@ -1,5 +1,5 @@
  // pages/invite/invite.js
-const bases = require('../..//utils/base.js')
+const bases = require('../../utils/base.js')
 Page({
 
   /**

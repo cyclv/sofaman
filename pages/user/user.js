@@ -26,7 +26,7 @@ Page({
     bases.updatauser().then(function(res){})
     // 页面信息
     bases.getrequst('/api/open').then(function (res) {
-      console.log(res.data.open)
+      //console.log(res.data.open)
       that.setData({pageinfo:res.data.open})
     })
     if (!usinfo.phone){ 
@@ -37,7 +37,7 @@ Page({
           if (res.confirm) {
             wx.navigateTo({ url: '/pages/user/usinfo/usinfo',})
           } else if (res.cancel) {
-            console.log('用户点击取消')
+            //console.log('用户点击取消')
           }
         }
       })

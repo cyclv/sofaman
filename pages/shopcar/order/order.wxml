@@ -22,8 +22,9 @@
         </view>
       </view>
       <view class='od-bom'>
-        <view class='btn' wx:if="{{items.order_status == 0}}" bindtap='payagin' data-odid='{{items.id}}'>付款</view>
+        <!-- <view class='btn' wx:if="{{items.order_status == 0}}" bindtap='payagin' data-odid='{{items.id}}'>付款</view> -->
         <view class='btn btn2' wx:if="{{items.order_status == 2}}" bindtap='already' data-odid='{{items.id}}'>确认收货</view>
+       <view class='btn btn2' wx:if="{{items.order_status == 2}}" bindtap='wuliu' data-odid='{{items}}'>物流</view> 
         <view class='btn btn2' wx:if="{{items.order_status == 3}}" bindtap='evaluate' data-odid='{{items.id}}'>去追评</view>
         <view class='btn btn2' wx:if="{{items.order_status == 0}}" bindtap='colsepay' data-odid='{{items.id}}'>取消订单</view>
         <view class='btn btn2' wx:if="{{items.order_status == 4}}">已完成</view>
@@ -33,9 +34,17 @@
     </view>
   </view>
   <!-- 暂无订单 -->
-  <view class='no-order flexct wt100' wx:else>
+  <view class='no-order flexct wt100' style='background: white;' wx:else>
     您还没有相关订单
   </view>
   </view>
+</view>
+<!-- 物流信息 -->
+<view class='wuliu flexfs' wx:if="{{wuliu}}">
+    <view class='wlinfo'>物流公司：{{wuliu.express_company}}</view>
+    <view class='wlinfo flexlb'>
+    <view>订单号：{{wuliu.express_code}}</view> <view bindtap='fuzhi'>复制</view></view>
+    <view class='wlinfo mgtop20'>发货时间：{{wuliu.updated_at}}</view>
+    <view class='delect' bindtap='closewl'>X</view>
 </view>
 

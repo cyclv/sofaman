@@ -78,3 +78,28 @@
 .no-order{
  height: 600rpx;
 }
+
+.wuliu{
+  position: fixed;
+  top: 160rpx;
+  left: 30rpx;
+  width: 650rpx;
+  height: 400rpx;
+  padding: 20rpx;
+  border-radius: 40rpx;
+  background: #f5f5f5;
+  font-size: 26rpx;
+}
+.wuliu .wlinfo{
+  height: 60rpx;
+  width: 640rpx;
+}
+.wuliu .wlinfo:first-child{
+  margin-top: 40rpx;
+}
+.wuliu .delect{
+  color: white;
+  position: fixed;
+  top: 180rpx;
+  right: 60rpx;
+}

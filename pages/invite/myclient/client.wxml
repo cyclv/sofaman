@@ -1,6 +1,6 @@
 <!--pages/invite/myclient/client.wxml-->
-<view class='container'>
-  <view class="myui-info flexlb wt90" wx:for="{{info}}" wx:key bindtap='clientdt' data-info='{{item}}'>
+<view wx:if='{{info.length > 0}}' class='container'>
+  <view class="myui-info flexlb wt90" wx:for="{{info}}" wx:key bindtap='clientdt' data-info='{{item.openid}}'>
     <view class='left flex' >
       <image src='{{item.avatar}}'></image>
       <text class='text'>{{item.nickname}}</text>
@@ -8,4 +8,5 @@
     <view class='right'>{{item.created_at}} <text class='next'> ＞</text></view>
   </view>
 </view>
+<view wx:else  class='container'>暂无数据</view>
 

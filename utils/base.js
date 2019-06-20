@@ -68,10 +68,27 @@ function updatauser() {
     })
   })
 }
+// 微信alert
+function wxzhifu(){
+  wx.showModal({
+    title: '成功',
+    content: '支付成功',
+    cancelText:'回到首页',
+    confirmText:'查看订单',
+    success(res) {
+      if (res.confirm) {
+        wx.navigateTo({ url: '/pages/shopcar/order/order' })
+      } else if (res.cancel) {
+        wx.switchTab({ url: '/pages/index/index' })
+      }
+    }
+  })
+}
 module.exports = {
   postrequst: postrequst,
   getrequst: getrequst,
   goodscollect:goodscollect,
   activelist: activelist,
-  updatauser: updatauser
+  updatauser: updatauser,
+  wxzhifu: wxzhifu
 }

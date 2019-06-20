@@ -22,7 +22,7 @@ Page({
   onLoad: function (options) {
     const that = this
     bases.getrequst('api/goods/detail', {goods_id:options.goods}).then(function(res){
-      console.log('商品信息',res.data)
+      //console.log('商品信息',res.data)
       that.setData({ goodsinfo: res.data})
       that.evaluate(res.data.goods.id);
     })
@@ -30,9 +30,8 @@ Page({
   // 请求评价
   evaluate:function(id){
     const that = this
-    console.log(id)
     bases.getrequst('api/goods/eavluate', { id: id,page:1,size:1}).then(function (res) {
-      console.log('评价信息', res.data)
+      //console.log('评价信息', res.data)
       if(res.code == 200){
         that.setData({ pingjia: res.data.data[0]})
       } else if (res.code == 1003){
@@ -68,7 +67,7 @@ Page({
   //商品收藏/api/collect/add
   collect:function(){
     var openid  = wx.getStorageSync('openid')
-    console.log(this.data.goodsinfo.goods.id)
+    //console.log(this.data.goodsinfo.goods.id)
     bases.goodscollect({ openid: openid, goods_id: this.data.goodsinfo.goods.id}).then(function(res){
       if(res.code == 200){
         wx.showToast({title: '收藏成功',})
@@ -93,7 +92,7 @@ Page({
       gdsinfo.sku = sku
       gdsinfo.color = color
       gdsinfo.goods.goods_num = this.data.goods_num
-      console.log(JSON.stringify(gdsinfo))
+      //console.log(JSON.stringify(gdsinfo))
       wx.navigateTo({ url: '/pages/shopcar/payod/payod?gdsinfo=' + JSON.stringify(gdsinfo)})
     }
   },
@@ -102,7 +101,7 @@ Page({
   addshopcar:function(data){
     const that = this
     bases.postrequst('/api/shopcar/add',data).then(function(res){
-      console.log('加入购物车情况',res)
+      //console.log('加入购物车情况',res)
       if(res.code == 200){
         wx.showToast({title: '成功加入购物车',})
         that.setData({ goodsdt: false})

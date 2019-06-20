@@ -51,7 +51,7 @@
       </view>
       <view class='right'>{{usinfo.score}}</view>
     </view>
-    <button class='btn' bindtap='pay' data-type='wechat'>微信支付</button>
+    <!-- <button class='btn' bindtap='pay' data-type='wechat'>微信支付</button> -->
     <button class='btn' bindtap='pay' data-type='integral'>积分支付</button>
   </view>
 </view>
@@ -107,7 +107,7 @@
       </view>
       <view class='right'>{{usinfo.score}}</view>
     </view>
-    <button class='btn' bindtap='paytwo' data-type='wechat'>微信支付</button>
+    <!-- <button class='btn' bindtap='paytwo' data-type='wechat'>微信支付</button> -->
     <button class='btn' bindtap='paytwo' data-type='integral'>积分支付</button>
   </view>
 </view>

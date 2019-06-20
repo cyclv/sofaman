@@ -21,7 +21,7 @@ Page({
   onLoad: function (options) {
     if (options.gdsinfo){
       var gdsinfo = JSON.parse(options.gdsinfo)
-      console.log(gdsinfo)
+      //console.log(gdsinfo)
       this.setData({ paynow: false, gdsinfo: gdsinfo})
       this.sum()
     }else{
@@ -32,7 +32,7 @@ Page({
   selectgoods:function(){
     const that = this
     bases.getrequst('api/shopcar/js', { openid: wx.getStorageSync('openid'), js_type: 'shopcar' }).then(function (res) {
-      console.log('我的购物车商品',res)
+      //console.log('我的购物车商品',res)
       if (res.code == 200) { that.setData({ paynow: true,shopcar: res.data }) }
     })
   },
@@ -67,7 +67,7 @@ Page({
   addresssl:function(){
     const that = this
     bases.getrequst('api/address/selected',{openid:wx.getStorageSync('openid')}).then(function(res){
-      console.log(res.data)
+      //console.log(res.data)
       if(res.code == 200){that.setData({address:res.data.address})}
     })
   },
@@ -77,17 +77,19 @@ Page({
     const adid = this.data.address.id
     const type = e.currentTarget.dataset.type
     const data = { openid: wx.getStorageSync('openid'), address_id: adid, payment: type}
-    console.log(data)
+    //console.log(data)
     if(adid){
       bases.postrequst('api/order/add', data).then(function (res) {
-        console.log(res)
+        //console.log(res)
         if (type == 'wechat') {
           that.wxpay('支付情况', res.data)
         } else {
           // 积分购买
-          console.log('积分购买', res.code)
+          //console.log('积分购买', res.code)
           if (res.code == 1022) {
             wx.showToast({ title: '积分不足', icon: 'loading', duration: 500 })
+          }else if(res.code == 200){
+            bases.wxzhifu()
           }
         }
       })
@@ -101,15 +103,15 @@ Page({
   // 直接购买
   paytwo: function(e){
     const type = e.currentTarget.dataset.type
-    console.log(type)
+    //console.log(type)
     const adid = this.data.address.id
     const gdif = this.data.gdsinfo 
     var that = this
     const data = {openid: wx.getStorageSync('openid'), address_id: adid, payment: type,goods_id: gdif.sku.goods_id, sku_id: gdif.sku.id, color_id: gdif.color.id, goods_num: gdif.goods.goods_num}
-    console.log(data)
+    //console.log(data)
     if (adid){
       bases.postrequst('api/order/buy',data).then(function (res) {
-        console.log(res)
+        //console.log(res)
         if (type == 'wechat') {
           that.wxpay(res.data)
         }else {
@@ -117,6 +119,8 @@ Page({
           console.log('积分购买')
           if (res.code == 1022) {
             wx.showToast({ title: '积分不足', icon: 'loading', duration: 500 })
+          }else if(res.code == 200){
+            bases.wxzhifu()
           }
         }
       })

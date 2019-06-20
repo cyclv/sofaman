@@ -14,8 +14,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    bases.getrequst('api/bill/recharge/list',{ openid:options.info,page:1,size:10}).then(function(res){
-      console.log(res)
+    console.log(options.info)
+    bases.getrequst('api/bill/recharge/list', {openid:options.info,page:1,size:10}).then(function(res){
+      console.log('客户信息',res)
       that.setData({content: res.data.list})
     })
   },
